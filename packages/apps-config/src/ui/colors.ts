@@ -49,6 +49,7 @@ const chainUnique = 'linear-gradient(180deg, #000219 0%, #000219 7%, #77903b 7%,
 const chainIdavoll = '#ff43ff';
 const chainSubDAO = 'linear-gradient(50deg, #F20092 0%, #FF4D5D 100%)';
 const chainTrustBase = '#ff43aa';
+const chainNftmart = '#815287';
 
 // based on node name
 // alphabetical
@@ -75,6 +76,7 @@ const nodeTernoa = '#d622ff';
 const nodeUnique = chainUnique;
 const nodeZero = '#0099cc';
 const nodeZenlink = 'linear-gradient(45deg, #F20082 0%, #FF4D4D 100%)';
+const nodeNftmart = '#307182';
 
 export { emptyColor };
 
@@ -132,6 +134,7 @@ export const chainColors: Record<string, any> = [
   ['TrustBase PC1', chainTrustBase],
   ['Uniarts', chainUniarts],
   ['Unique Node', chainUnique],
+  ['Nftmart Testnet', chainNftmart],
   ['Westend', chainWestend],
   ['Zenlink PC1', chainZenlink],
   ['ZΞRO Alphaville', chainZero]
@@ -166,6 +169,7 @@ export const nodeColors: Record<string, any> = [
   ['Ternoa Node', nodeTernoa],
   ['Unique Node', nodeUnique],
   ['Zenlink Collator', nodeZenlink],
+  ['Nftmart Testnet', nodeNftmart],
   ['SubDAO Collator', nodeSubDAO]
   // ['node template', emptyColor],
   // ['parity polkadot', emptyColor],

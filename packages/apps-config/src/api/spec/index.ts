@@ -55,6 +55,7 @@ import subsocial from './subsocial';
 import ternoa from './ternoa';
 import trustbase from './trustbase';
 import uniarts from './uniarts';
+import nftmart from './nftmart';
 import zenlink from './zenlink';
 import zero from './zero';
 
@@ -120,6 +121,7 @@ const spec: Record<string, OverrideBundleDefinition> = {
   ternoa,
   trustbase,
   uniarts,
+  nftmart,
   zenlink
 };
 

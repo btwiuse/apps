@@ -69,6 +69,7 @@ import nodeTernoa from './nodes/ternoa.svg';
 import nodeTrustBase from './nodes/trustbase.png';
 import nodeUniarts from './nodes/uniarts.png';
 import nodeUnique from './nodes/unique.png';
+import nodeNftmart from './nodes/nftmart.svg';
 import nodeZenlink from './nodes/zenlink.svg';
 import nodeZero from './nodes/zero.svg';
 // last-resort fallback, just something empty
@@ -109,6 +110,7 @@ export const chainLogos: Record<string, unknown> = [
   ['Trick', chainRococoTrick],
   ['TrustBase PC1', nodeTrustBase],
   ['Uniarts', nodeUniarts],
+  ['Nftmart Testnet', nodeNftmart],
   ['Unique', chainUnique]
 ].reduce((logos, [chain, logo]): Record<string, unknown> => ({
   ...logos,
@@ -183,6 +185,7 @@ export const nodeLogos: Record<string, unknown> = [
   ['Zenlink Collator', nodeZenlink],
   ['SubDAO Collator', nodeSubDAO],
   ['Uniarts', nodeUniarts],
+  ['Nftmart Testnet', nodeNftmart],
   ['Unique Node', nodeUnique]
 ].reduce((logos, [node, logo]): Record<string, unknown> => ({
   ...logos,
@@ -266,6 +269,7 @@ export const namedLogos: Record<string, unknown> = {
   uniarts: nodeUniarts,
   unique: nodeUnique,
   westend: nodePolkadot,
+  nftmart: nodeNftmart,
   zero: nodeZero
 };
 
