@@ -69,7 +69,7 @@ import nodeTernoa from './nodes/ternoa.svg';
 import nodeTrustBase from './nodes/trustbase.png';
 import nodeUniarts from './nodes/uniarts.png';
 import nodeUnique from './nodes/unique.png';
-import nodeNftmart from './nodes/nftmart.svg';
+import nodeNftmart from './nodes/nftmart.png';
 import nodeZenlink from './nodes/zenlink.svg';
 import nodeZero from './nodes/zero.svg';
 // last-resort fallback, just something empty
