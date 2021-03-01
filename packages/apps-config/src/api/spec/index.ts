@@ -33,6 +33,7 @@ import hydrate from './hydrate';
 import idavoll from './idavoll';
 import integritee from './integritee';
 import jupiter from './jupiter';
+import jupiterRococo from './jupiter-rococo';
 import kilt from './kilt';
 import kulupu from './kulupu';
 import laminar from './laminar';
@@ -93,7 +94,8 @@ const spec: Record<string, OverrideBundleDefinition> = {
   'hydra-dx': hydrate,
   idavoll,
   'integritee-parachain': integritee,
-  jupiter,
+  'jupiter-prep': jupiter,
+  'jupiter-rococo': jupiterRococo,
   'kilt-parachain': kilt,
   kulupu,
   laminar,
