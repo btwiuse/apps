@@ -13,6 +13,12 @@ const definitions: OverrideBundleDefinition = {
       // on all versions
       minmax: [0, undefined],
       types: {
+        CategoryData: {
+          metadata: 'NFTMetadata',
+          nftCount: 'Balance'
+        },
+        CategoryId: 'u32',
+        CategoryIdOf: 'CategoryId',
         ClassId: 'u32',
         TokenId: 'u64',
         CurrencyId: 'u32',
