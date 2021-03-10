@@ -13,26 +13,40 @@ const definitions: OverrideBundleDefinition = {
       // on all versions
       minmax: [0, undefined],
       types: {
+        Properties: 'u8',
+        NFTMetadata: 'Vec<u8>',
+
+        CategoryId: 'u32',
+        CategoryIdOf: 'CategoryId',
         CategoryData: {
           metadata: 'NFTMetadata',
           nftCount: 'Balance'
         },
-        CategoryId: 'u32',
-        CategoryIdOf: 'CategoryId',
-        ClassId: 'u32',
-        TokenId: 'u64',
+
         CurrencyId: 'u32',
         CurrencyIdOf: 'CurrencyId',
         Amount: 'i128',
         AmountOf: 'Amount',
-        NFTMetadata: 'Vec<u8>',
+
+        ClassId: 'u32',
         ClassIdOf: 'ClassId',
+        ClassInfoOf: {
+          metadata: 'NFTMetadata',
+          totalIssuance: 'TokenId',
+          owner: 'AccountId',
+          data: 'ClassData'
+        },
+        ClassData: {
+          deposit: 'Compact<Balance>',
+          properties: 'Properties',
+          name: 'Vec<u8>',
+          description: 'Vec<u8>'
+        },
+
+        TokenId: 'u64',
         TokenIdOf: 'TokenId',
-        ClassInfoOf: { metadata: 'NFTMetadata', totalIssuance: 'TokenId', owner: 'AccountId', data: 'ClassData' },
         TokenInfoOf: { metadata: 'NFTMetadata', owner: 'AccountId', data: 'TokenData' },
-        ClassData: { deposit: 'Balance', properties: 'Properties', name: 'Vec<u8>', description: 'Vec<u8>' },
-        TokenData: { deposit: 'Balance' },
-        Properties: 'u8'
+        TokenData: { deposit: 'Compact<Balance>' }
       }
     }
   ]
