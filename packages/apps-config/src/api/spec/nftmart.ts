@@ -16,11 +16,21 @@ const definitions: OverrideBundleDefinition = {
         Properties: 'u8',
         NFTMetadata: 'Vec<u8>',
 
+        OrderData: {
+          currencyId: 'Compact<CurrencyIdOf>',
+          price: 'Compact<Balance>',
+          deposit: 'Compact<Balance>',
+          deadline: 'Compact<BlockNumberOf>',
+          categoryId: 'Compact<CategoryIdOf>',
+          classId: 'Compact<ClassIdOf>',
+          tokenId: 'Compact<TokenIdOf>',
+        },
+
         CategoryId: 'u32',
         CategoryIdOf: 'CategoryId',
         CategoryData: {
           metadata: 'NFTMetadata',
-          nftCount: 'Balance'
+          nftCount: 'Compact<Balance>'
         },
 
         CurrencyId: 'u32',
