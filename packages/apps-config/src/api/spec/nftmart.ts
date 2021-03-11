@@ -15,6 +15,8 @@ const definitions: OverrideBundleDefinition = {
       types: {
         Properties: 'u8',
         NFTMetadata: 'Vec<u8>',
+        BlockNumber: 'u32',
+        BlockNumberOf: 'BlockNumber',
 
         OrderData: {
           currencyId: 'Compact<CurrencyIdOf>',
