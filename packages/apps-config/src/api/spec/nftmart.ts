@@ -23,9 +23,7 @@ const definitions: OverrideBundleDefinition = {
           price: 'Compact<Balance>',
           deposit: 'Compact<Balance>',
           deadline: 'Compact<BlockNumberOf>',
-          categoryId: 'Compact<CategoryIdOf>',
-          classId: 'Compact<ClassIdOf>',
-          tokenId: 'Compact<TokenIdOf>'
+          categoryId: 'Compact<CategoryIdOf>'
         },
 
         CategoryId: 'u32',
