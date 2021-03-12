@@ -162,7 +162,7 @@ export function createTesting (t: TFunction): LinkOption[] {
     },
     {
       info: 'kilt',
-      text: t('rpc.kilt', 'Mashnet', { ns: 'apps-config' }),
+      text: t('rpc.kilt', 'KILT Mashnet', { ns: 'apps-config' }),
       providers: {
         'KILT Protocol': 'wss://full-nodes.kilt.io:9944/'
       }
@@ -194,6 +194,13 @@ export function createTesting (t: TFunction): LinkOption[] {
       text: t('rpc.polkabtc', 'PolkaBTC', { ns: 'apps-config' }),
       providers: {
         Interlay: 'wss://beta.polkabtc.io/api/parachain'
+      }
+    },
+    {
+      info: 'realis',
+      text: t('rpc.realis', 'Realis Network', { ns: 'apps-config' }),
+      providers: {
+        'Realis Network': 'wss://rpc.realis.network/'
       }
     },
     {

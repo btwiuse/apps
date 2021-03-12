@@ -46,6 +46,7 @@ import plasm from './plasm';
 import plasmParachain from './plasm-parachain';
 import polkabtc from './polkabtc';
 import polkadex from './polkadex';
+import realis from './realis';
 import robonomics from './robonomics';
 import sgc from './sgc';
 import snowbridge from './snowbridge';
@@ -114,6 +115,7 @@ const spec: Record<string, OverrideBundleDefinition> = {
   'phala-node': phala,
   plasm,
   'plasm-parachain': plasmParachain,
+  realis,
   robonomics,
   'sgc-node': sgc,
   snowbridge,

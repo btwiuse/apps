@@ -9,7 +9,7 @@ import { Button, InputAddress, InputBalance, InputNumber, Modal, TxButton } from
 import { useAccounts, useApi, useToggle } from '@polkadot/react-hooks';
 import { BN_ZERO } from '@polkadot/util';
 
-import { useTranslation } from './translate';
+import { useTranslation } from '../translate';
 
 interface Props {
   bestNumber?: BN;
@@ -29,7 +29,9 @@ function FundAdd ({ bestNumber, className }: Props): React.ReactElement<Props> {
   const [isOpen, toggleOpen] = useToggle();
 
   const isEndError = !bestNumber || !endBlock || endBlock.lt(bestNumber);
-  const isLastError = !lastSlot || !firstSlot || lastSlot.eq(BN_ZERO) || lastSlot.lte(firstSlot) || lastSlot.gt(firstSlot.addn(3));
+  const isLastError = !lastSlot || !firstSlot || lastSlot.lt(firstSlot) || lastSlot.gt(firstSlot.addn(3));
+
+  // TODO Add verifier
 
   return (
     <>
@@ -99,13 +101,11 @@ function FundAdd ({ bestNumber, className }: Props): React.ReactElement<Props> {
             <Modal.Columns>
               <Modal.Column>
                 <InputNumber
-                  isZeroable={false}
                   label={t<string>('first slot')}
                   onChange={setFirstSlot}
                 />
                 <InputNumber
                   isError={isLastError}
-                  isZeroable={false}
                   label={t<string>('last slot')}
                   onChange={setLastSlot}
                 />
@@ -119,9 +119,10 @@ function FundAdd ({ bestNumber, className }: Props): React.ReactElement<Props> {
             <TxButton
               accountId={accountId}
               icon='plus'
-              isDisabled={!paraId?.gt(BN_ZERO) || !cap?.gt(BN_ZERO) || !firstSlot?.gt(BN_ZERO) || isEndError || isLastError}
+              isDisabled={!paraId?.gt(BN_ZERO) || !cap?.gt(BN_ZERO) || !firstSlot?.gte(BN_ZERO) || isEndError || isLastError}
+              label={t<string>('Add')}
               onStart={toggleOpen}
-              params={[paraId, cap, firstSlot, lastSlot, endBlock]}
+              params={[paraId, cap, firstSlot, lastSlot, endBlock, null]}
               tx={api.tx.crowdloan.create}
             />
           </Modal.Actions>

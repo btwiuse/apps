@@ -25,7 +25,7 @@ const definitions: OverrideBundleDefinition = {
           deadline: 'Compact<BlockNumberOf>',
           categoryId: 'Compact<CategoryIdOf>',
           classId: 'Compact<ClassIdOf>',
-          tokenId: 'Compact<TokenIdOf>',
+          tokenId: 'Compact<TokenIdOf>'
         },
 
         CategoryId: 'u32',
