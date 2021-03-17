@@ -15,7 +15,6 @@ import clover from './clover';
 import cloverRococo from './clover-rococo';
 import crab from './crab';
 import crust from './crust';
-import crustParachain from './crust-parachain';
 import testPara from './cumulus-test-parachain';
 import darwinia from './darwinia';
 import darwiniaParachain from './darwinia-parachain';
@@ -28,6 +27,7 @@ import encointerNodeNotee from './encointer-node-notee';
 import encointerNodeTeeproxy from './encointer-node-teeproxy';
 import encointerPara from './encointer-para';
 import equilibrium from './equilibrium';
+import galois from './galois';
 import hanonycash from './hanonycash';
 import hydrate from './hydrate';
 import idavoll from './idavoll';
@@ -76,17 +76,19 @@ const spec: Record<string, OverrideBundleDefinition> = {
   canvas,
   'centrifuge-chain': centrifugeChain,
   chainx,
+  'chainx-parachain': chainx,
   clover,
   'clover-rococo': cloverRococo,
   crust,
-  'crust-parachain': crustParachain,
+  'crust-parachain': crust,
   'cumulus-test-parachain': testPara,
   'darwinia-parachain': darwiniaParachain,
   'datahighway-parachain': datahighwayParachain,
+  'dev-parachain': zenlink,
   'dock-main-runtime': dock,
   'dock-testnet': dock,
   'dotmog-node': dotmog,
-  dusty3: dusty,
+  dusty4: dusty,
   edgeware,
   'encointer-node-notee': encointerNodeNotee,
   'encointer-node-teeproxy': encointerNodeTeeproxy,
@@ -104,6 +106,7 @@ const spec: Record<string, OverrideBundleDefinition> = {
   litentry,
   mandala: acala,
   'mashnet-node': kilt,
+  'mathchain-galois': galois,
   'moonbase-alphanet': moonbeam,
   moonbeam,
   'moonbeam-standalone': moonbeam,
@@ -127,8 +130,7 @@ const spec: Record<string, OverrideBundleDefinition> = {
   ternoa,
   trustbase,
   uniarts,
-  nftmart,
-  zenlink
+  nftmart
 };
 
 export default spec;
