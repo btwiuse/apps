@@ -116,6 +116,7 @@ export const chainLogos: Record<string, unknown> = [
   ['TrustBase PC1', nodeTrustBase],
   ['Uniarts', nodeUniarts],
   ['Nftmart Testnet', nodeNftmart],
+  ['Nftmart Staging', nodeNftmart],
   ['Unique', chainUnique]
 ].reduce((logos, [chain, logo]): Record<string, unknown> => ({
   ...logos,
@@ -192,6 +193,7 @@ export const nodeLogos: Record<string, unknown> = [
   ['SubDAO Collator', nodeSubDAO],
   ['Uniarts', nodeUniarts],
   ['Nftmart Testnet', nodeNftmart],
+  ['Nftmart Staging', nodeNftmart],
   ['Unique Node', nodeUnique]
 ].reduce((logos, [node, logo]): Record<string, unknown> => ({
   ...logos,

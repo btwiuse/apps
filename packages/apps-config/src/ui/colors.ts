@@ -139,6 +139,7 @@ export const chainColors: Record<string, any> = [
   ['Uniarts', chainUniarts],
   ['Unique Node', chainUnique],
   ['Nftmart Testnet', chainNftmart],
+  ['Nftmart Staging', chainNftmart],
   ['Westend', chainWestend],
   ['Zenlink PC1', chainZenlink],
   ['ZΞRO Alphaville', chainZero]
@@ -175,6 +176,7 @@ export const nodeColors: Record<string, any> = [
   ['Unique Node', nodeUnique],
   ['Zenlink Collator', nodeZenlink],
   ['Nftmart Testnet', nodeNftmart],
+  ['Nftmart Staging', nodeNftmart],
   ['SubDAO Collator', nodeSubDAO]
   // ['node template', emptyColor],
   // ['parity polkadot', emptyColor],

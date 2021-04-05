@@ -16,13 +16,6 @@ import { expandEndpoints } from './util';
 
 export function createTesting (t: TFunction): LinkOption[] {
   return expandEndpoints(t, [
-    {
-      info: 'nftmart',
-      text: t('rpc.nftmart', 'Nftmart', { ns: 'apps-config' }),
-      providers: {
-        NftmartDev: 'ws://8.136.111.191:9944'
-      }
-    },
     // alphabetical based on chain name, e.g. Amber, Arcadia, Beresheet, ...
     {
       info: 'centrifuge',
