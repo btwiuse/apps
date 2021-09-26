@@ -1,8 +1,6 @@
 name: Master
 on:
   push:
-    branches:
-      - master
 
 jobs:
   # publish to gh-pages (& IPFS when a release is detected)
