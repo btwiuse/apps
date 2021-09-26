@@ -60,7 +60,19 @@ export function createOwn (t: TFunction): LinkOption[] {
 }
 
 export function createDev (t: TFunction): LinkOption[] {
+  const fix = (url)=>{
+    if (url.startsWith("ws://") || url.startsWith("wss://")) return url ;
+    var prefix = (window.location.protocol == "https:") ? 'wss://' : 'ws://'
+    return prefix + window.location.host + url ;
+  }
+
   return [
+    {
+      info: 'nftmart',
+      text: t('rpc.nftmart', 'My Nftmart Validator', { ns: 'apps-config' }),
+      textBy: fix('/ws'),
+      value: fix('/ws')
+    },
     {
       dnslink: 'local',
       info: 'local',

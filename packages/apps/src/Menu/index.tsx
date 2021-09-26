@@ -16,7 +16,6 @@ import { useAccounts, useApi, useCall } from '@polkadot/react-hooks';
 
 import { findMissingApis } from '../endpoint';
 import { useTranslation } from '../translate';
-import ChainInfo from './ChainInfo';
 import Grouping from './Grouping';
 import Item from './Item';
 import NodeInfo from './NodeInfo';
@@ -126,7 +125,6 @@ function Menu ({ className = '' }: Props): React.ReactElement<Props> {
     <div className={`${className}${isLoading ? ' isLoading' : ''} highlight--bg`}>
       <div className='menuContainer'>
         <div className='menuSection'>
-          <ChainInfo />
           <ul className='menuItems'>
             {visibleGroups.map(({ name, routes }): React.ReactNode => (
               <Grouping

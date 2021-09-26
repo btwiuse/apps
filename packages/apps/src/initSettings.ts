@@ -41,13 +41,18 @@ function getApiUrl (): string {
 
   const stored = store.get('settings') as Record<string, unknown> || {};
   const fallbackUrl = endpoints.find(({ value }) => !!value);
+  const fix = (url)=>{
+    if (url.startsWith("ws://") || url.startsWith("wss://")) return url ;
+    var prefix = (window.location.protocol == "https:") ? 'wss://' : 'ws://'
+    return prefix + window.location.host + url ;
+  }
 
   // via settings, or the default chain
   return [stored.apiUrl, process.env.WS_URL].includes(settings.apiUrl)
     ? settings.apiUrl // keep as-is
     : fallbackUrl
       ? fallbackUrl.value as string // grab the fallback
-      : 'ws://127.0.0.1:9944'; // nothing found, go local
+      : fix('/ws'); // nothing found, go local
 }
 
 const apiUrl = getApiUrl();
