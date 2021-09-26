@@ -286,7 +286,7 @@ export function createTesting (t: TFunction, firstOnly: boolean, withSort: boole
     },
     {
       info: 'nftmart',
-      text: t('rpc.test.nftmart', 'NFTMart', { ns: 'apps-config' }),
+      text: t('rpc.test.nftmart', 'NFTMart Testnet', { ns: 'apps-config' }),
       providers: {
         NFTMartDev: 'wss://dev-ws.nftmart.io',
         NFTMartStaging: 'wss://staging-ws.nftmart.io'
