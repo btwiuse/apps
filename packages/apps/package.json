@@ -24,7 +24,6 @@
     "@polkadot/react-hooks": "^0.116.2-15",
     "@polkadot/react-params": "^0.116.2-15",
     "@polkadot/react-query": "^0.116.2-15",
-    "@polkadot/react-signer": "^0.116.2-15",
     "punycode": "^2.1.1",
     "query-string": "^7.1.1"
   },

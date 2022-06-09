@@ -18,7 +18,6 @@ import { web3Accounts, web3Enable } from '@polkadot/extension-dapp';
 import { TokenUnit } from '@polkadot/react-components/InputNumber';
 import { StatusContext } from '@polkadot/react-components/Status';
 import { useApiUrl, useEndpoint } from '@polkadot/react-hooks';
-import ApiSigner from '@polkadot/react-signer/signers/ApiSigner';
 import { ScProvider, WellKnownChain } from '@polkadot/rpc-provider/substrate-connect';
 import { keyring } from '@polkadot/ui-keyring';
 import { settings } from '@polkadot/ui-settings';
@@ -249,7 +248,7 @@ function getWellKnownChain (chain = 'polkadot') {
   }
 }
 
-async function createApi (apiUrl: string, signer: ApiSigner, onError: (error: unknown) => void): Promise<Record<string, Record<string, string>>> {
+async function createApi (apiUrl: string, onError: (error: unknown) => void): Promise<Record<string, Record<string, string>>> {
   const types = getDevTypes();
   const isLight = apiUrl.startsWith('light://');
 
@@ -263,7 +262,6 @@ async function createApi (apiUrl: string, signer: ApiSigner, onError: (error: un
     api = new ApiPromise({
       provider: providers[0],
       registry,
-      signer,
       types,
       typesBundle,
       typesChain
@@ -313,7 +311,7 @@ function Api ({ apiUrl, children, isElectron, store }: Props): React.ReactElemen
 
   // initial initialization
   useEffect((): void => {
-    createApi(apiUrl, new ApiSigner(registry, queuePayload, queueSetTxStatus), onError)
+    createApi(apiUrl, onError)
       .then((types): void => {
         api.on('connected', () => setIsApiConnected(true));
         api.on('disconnected', () => setIsApiConnected(false));

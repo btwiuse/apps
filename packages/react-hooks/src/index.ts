@@ -37,7 +37,6 @@ export { useIpfs } from './useIpfs';
 export { useIpfsFetch } from './useIpfsFetch';
 export { useIsMountedRef } from './useIsMountedRef';
 export { useJudgements } from './useJudgements';
-export { useLedger } from './useLedger';
 export { useLoadingDelay } from './useLoadingDelay';
 export { useMapEntries } from './useMapEntries';
 export { useMapKeys } from './useMapKeys';

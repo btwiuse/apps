@@ -6,11 +6,9 @@ import type { BareProps as Props, ThemeDef } from '@polkadot/react-components/ty
 import React, { useContext, useMemo } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 
-//import AccountSidebar from '@polkadot/app-accounts/Sidebar';
 import { getSystemColor } from '@polkadot/apps-config';
 import GlobalStyle from '@polkadot/react-components/styles';
 import { useApi } from '@polkadot/react-hooks';
-import Signer from '@polkadot/react-signer';
 
 import ConnectingOverlay from './overlays/Connecting';
 import Content from './Content';
@@ -36,9 +34,7 @@ function Apps ({ className = '' }: Props): React.ReactElement<Props> {
       <div className={`apps--Wrapper theme--${theme} ${className}`}>
         <Menu />
         <div>
-          <Signer>
             <Content />
-          </Signer>
           <ConnectingOverlay />
           <div id={PORTAL_ID} />
         </div>

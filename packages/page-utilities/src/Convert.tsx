@@ -5,7 +5,6 @@ import type { Option } from '@polkadot/apps-config/settings/types';
 
 import React, { useCallback, useMemo, useState } from 'react';
 
-import { createOption } from '@polkadot/app-settings/util';
 import { createSs58 } from '@polkadot/apps-config';
 import { allNetworks } from '@polkadot/networks';
 import { Dropdown, InputAddressSimple, Static } from '@polkadot/react-components';
@@ -13,6 +12,7 @@ import { useApi } from '@polkadot/react-hooks';
 import { formatNumber } from '@polkadot/util';
 import { base58Decode, checkAddressChecksum, encodeAddress, isAddress } from '@polkadot/util-crypto';
 
+import { createOption } from './createOption';
 import { useTranslation } from './translate';
 
 interface Props {

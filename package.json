@@ -99,7 +99,6 @@
     "@polkadot/api-base": "^8.7.2-1",
     "@polkadot/api-contract": "^8.7.2-1",
     "@polkadot/api-derive": "^8.7.2-1",
-    "@polkadot/hw-ledger": "^9.4.1",
     "@polkadot/keyring": "^9.4.1",
     "@polkadot/networks": "^9.4.1",
     "@polkadot/phishing": "^0.13.66",
