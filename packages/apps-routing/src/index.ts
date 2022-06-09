@@ -5,11 +5,16 @@ import type { TFunction } from 'i18next';
 import type { Routes } from './types';
 
 import accounts from './accounts';
+import settings from './settings';
+import treasury from './treasury';
+import claims from './claims';
+import utilities from './utilities';
+
+/*
 import addresses from './addresses';
 import assets from './assets';
 import bounties from './bounties';
 import calendar from './calendar';
-import claims from './claims';
 import collator from './collator';
 import contracts from './contracts';
 import council from './council';
@@ -19,12 +24,11 @@ import extrinsics from './extrinsics';
 import files from './files';
 import gilt from './gilt';
 import js from './js';
-import membership from './membership';
+//import membership from './membership';
 import nfts from './nfts';
 import parachains from './parachains';
 import poll from './poll';
 import rpc from './rpc';
-import settings from './settings';
 import signing from './signing';
 import society from './society';
 import staking from './staking';
@@ -33,15 +37,20 @@ import sudo from './sudo';
 import techcomm from './techcomm';
 import teleport from './teleport';
 import transfer from './transfer';
-import treasury from './treasury';
-import utilities from './utilities';
+*/
 
 export default function create (t: TFunction): Routes {
   return [
     accounts(t),
+    settings(t),
+    treasury(t),
+    claims(t),
+    utilities(t),
+  ]
+  /*
+  return [
     addresses(t),
     explorer(t),
-    claims(t),
     poll(t),
     transfer(t),
     teleport(t),
@@ -49,10 +58,9 @@ export default function create (t: TFunction): Routes {
     collator(t),
     democracy(t),
     council(t),
-    treasury(t),
     bounties(t),
     techcomm(t),
-    membership(t),
+    //membership(t),
     parachains(t),
     gilt(t),
     assets(t),
@@ -67,7 +75,6 @@ export default function create (t: TFunction): Routes {
     sudo(t),
     files(t),
     js(t),
-    utilities(t),
-    settings(t)
   ];
+  */
 }
