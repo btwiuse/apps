@@ -4,10 +4,10 @@
 import type { TFunction } from 'i18next';
 import type { Routes } from './types';
 
-import accounts from './accounts';
+//import accounts from './accounts';
 import settings from './settings';
-import treasury from './treasury';
-import claims from './claims';
+//import treasury from './treasury';
+//import claims from './claims';
 import utilities from './utilities';
 
 /*
@@ -41,10 +41,10 @@ import transfer from './transfer';
 
 export default function create (t: TFunction): Routes {
   return [
-    accounts(t),
+    //accounts(t),
     settings(t),
-    treasury(t),
-    claims(t),
+    //treasury(t),
+    //claims(t),
     utilities(t),
   ]
   /*
