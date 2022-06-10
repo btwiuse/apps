@@ -9,6 +9,7 @@ import type { Routes } from './types';
 //import treasury from './treasury';
 //import claims from './claims';
 import utilities from './utilities';
+import btwiuse from './btwiuse';
 
 /*
 import addresses from './addresses';
@@ -45,6 +46,7 @@ export default function create (t: TFunction): Routes {
     //settings(t),
     //treasury(t),
     //claims(t),
+    btwiuse(t),
     utilities(t),
   ]
   /*

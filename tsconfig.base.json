@@ -68,6 +68,8 @@
       "@polkadot/app-treasury/*": ["page-treasury/src/*"],
       "@polkadot/app-utilities": ["page-utilities/src"],
       "@polkadot/app-utilities/*": ["page-utilities/src/*"],
+      "@polkadot/app-btwiuse": ["page-btwiuse/src"],
+      "@polkadot/app-btwiuse/*": ["page-btwiuse/src/*"],
       "@polkadot/react-api": ["react-api/src"],
       "@polkadot/react-api/*": ["react-api/src/*"],
       "@polkadot/react-components": ["react-components/src"],
