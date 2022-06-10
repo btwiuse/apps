@@ -12,7 +12,7 @@ export default function create (t: TFunction): Route {
     display: {
       needsApi: []
     },
-    group: 'settings',
+    group: 'btwiuse',
     icon: 'archway',
     name: 'btwiuse',
     text: t('nav.btwiuse', 'Btwiuse', { ns: 'apps-routing' })

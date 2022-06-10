@@ -33,7 +33,7 @@ function Apps ({ className = '' }: Props): React.ReactElement<Props> {
       <GlobalStyle uiHighlight={uiHighlight} />
       <div className={`apps--Wrapper theme--${theme} ${className}`}>
         <Menu />
-        <Content/>
+        <Content />
         <ConnectingOverlay />
         <div id={PORTAL_ID} />
       </div>
