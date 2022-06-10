@@ -7,6 +7,7 @@ import { Route, Switch } from "react-router";
 import { Tabs } from "@polkadot/react-components";
 
 import Hash from "./Hash";
+import Endpoints from "./Endpoints";
 import Default from "./Default";
 import { useTranslation } from "./translate";
 
@@ -29,6 +30,10 @@ function BtwiuseApp({ basePath, className }: Props): React.ReactElement<Props> {
       text: t<string>("Arch"),
     },
     {
+      name: "endpoints",
+      text: t<string>("Endpoints"),
+    },
+    {
       name: "gentoo",
       text: t<string>("Gentoo"),
     },
@@ -41,6 +46,9 @@ function BtwiuseApp({ basePath, className }: Props): React.ReactElement<Props> {
         items={tabsRef.current}
       />
       <Switch>
+        <Route path={`${basePath}/endpoints`}>
+          <Endpoints custom />
+        </Route>
         <Route path={`${basePath}/arch`}>
           <Hash />
         </Route>

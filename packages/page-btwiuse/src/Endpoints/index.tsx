@@ -22,6 +22,7 @@ interface Props {
   className?: string;
   offset?: number | string;
   onClose: () => void;
+  custom?: boolean;
 }
 
 interface UrlState {
@@ -129,9 +130,10 @@ function isSwitchDisabled (hasUrlChanged: boolean, apiUrl: string, isUrlValid: b
   return true;
 }
 
-function Endpoints ({ className = '', offset, onClose }: Props): React.ReactElement<Props> {
+function Endpoints ({ className = '', offset, onClose, custom }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
   const linkOptions = createWsEndpoints(t);
+  console.log('linkOptions', linkOptions);
   const [groups, setGroups] = useState(() => combineEndpoints(linkOptions));
   const [{ apiUrl, groupIndex, hasUrlChanged, isUrlValid }, setApiUrl] = useState<UrlState>(() => extractUrlState(settings.get().apiUrl, groups));
   const [storedCustomEndpoints, setStoredCustomEndpoints] = useState<string[]>(() => getCustomEndpoints());
@@ -247,6 +249,59 @@ function Endpoints ({ className = '', offset, onClose }: Props): React.ReactElem
     [hasUrlChanged, apiUrl, isUrlValid]
   );
 
+  if (custom)
+  return (
+    <div>
+      <Button
+        icon='sync'
+        isDisabled={canSwitch}
+        label={t<string>('Switch')}
+        onClick={_onApply}
+      />
+      {groups.map((group, index): React.ReactNode => (
+        <GroupDisplay
+          affinities={affinities}
+          apiUrl={apiUrl}
+          index={index}
+          isSelected={groupIndex === index}
+          key={index}
+          setApiUrl={_setApiUrl}
+          setGroup={_changeGroup}
+          value={group}
+        >
+          {group.isDevelopment && (
+            <div className='endpointCustomWrapper'>
+              <Input
+                className='endpointCustom'
+                isError={!isUrlValid}
+                isFull
+                label={t<string>('custom endpoint')}
+                onChange={_onChangeCustom}
+                value={apiUrl}
+              />
+              {isSavedCustomEndpoint
+                ? (
+                  <Button
+                    className='customButton'
+                    icon='trash-alt'
+                    onClick={_removeApiEndpoint}
+                  />
+                )
+                : (
+                  <Button
+                    className='customButton'
+                    icon='save'
+                    isDisabled={!isUrlValid || isKnownUrl}
+                    onClick={_saveApiEndpoint}
+                  />
+                )
+              }
+            </div>
+          )}
+        </GroupDisplay>
+      ))}
+    </div>
+  );
   return (
     <Sidebar
       button={

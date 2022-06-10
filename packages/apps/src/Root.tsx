@@ -42,6 +42,15 @@ function Root ({ isElectron, store }: Props): React.ReactElement<Props> {
   }, []);
 
   return (
+    <ThemeProvider theme={theme}>
+      <Api apiUrl={settings.apiUrl} isElectron={isElectron} store={store} >
+        <HashRouter>
+          <Apps />
+        </HashRouter>
+      </Api>
+    </ThemeProvider>
+  );
+  return (
     <Suspense fallback='...'>
       <ThemeProvider theme={theme}>
         <Queue>
