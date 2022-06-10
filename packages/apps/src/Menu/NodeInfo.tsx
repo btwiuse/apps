@@ -20,10 +20,15 @@ function NodeInfo ({ className = '' }: Props): React.ReactElement<Props> {
   return (
     <div className={`${className} media--1400 highlight--color-contrast ui--NodeInfo`}>
       {isApiReady && (
+       <>
         <div>
           <NodeName />&nbsp;
           <NodeVersion label='v' />
         </div>
+        <div>
+          {`metadata v${api.runtimeMetadata.version}`}
+        </div>
+       </>
       )}
       <div>{api.libraryInfo.replace('@polkadot/', '')}</div>
       <div>{uiInfo}</div>

@@ -3,12 +3,14 @@
 
 import type { Snippet } from './../types';
 
+import { metadataVersion } from './metadata';
 import { constsStakingParameters } from './consts-examples';
 import { extrinsicMakeTransfer } from './extrinsics-examples';
 import { rpcNetworkAuthoring, rpcNewHead, rpcQueryState, rpcSysthemInfo } from './rpc-examples';
 import { storageGetInfo, storageKeys, storageListenToBalanceChange, storageListenToMultipleBalancesChange, storageRetrieveInfoOnQueryKeys, storageSystemEvents } from './storage-examples';
 
 const snippets: Snippet[] = [
+  metadataVersion,
   rpcNetworkAuthoring,
   rpcNewHead,
   rpcQueryState,
