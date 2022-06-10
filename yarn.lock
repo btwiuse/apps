@@ -15240,6 +15240,8 @@ __metadata:
     styled-components: ^5.3.5
     webpack: ^5.73.0
     webpack-cli: ^4.9.2
+    xterm: ^4.18.0
+    xterm-addon-fit: ^0.5.0
   languageName: unknown
   linkType: soft
 
@@ -20039,6 +20041,22 @@ resolve@^2.0.0-next.3:
   version: 4.0.2
   resolution: "xtend@npm:4.0.2"
   checksum: ac5dfa738b21f6e7f0dd6e65e1b3155036d68104e67e5d5d1bde74892e327d7e5636a076f625599dc394330a731861e87343ff184b0047fef1360a7ec0a5a36a
+  languageName: node
+  linkType: hard
+
+"xterm-addon-fit@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "xterm-addon-fit@npm:0.5.0"
+  peerDependencies:
+    xterm: ^4.0.0
+  checksum: 884d9f360893335c87e4514beeda2af6dbebf38a89b8518f1126d9c4611aefc1598b750bb43a953b79fdf1179c40d70c77a9169ae10f07e0abbbdb39b919b33f
+  languageName: node
+  linkType: hard
+
+"xterm@npm:^4.18.0":
+  version: 4.18.0
+  resolution: "xterm@npm:4.18.0"
+  checksum: c1f391b0894928e048f8b6334943470b9e8fe91987222716a6c82840757475b87196383f6ce872250fe3dff3d984f45411fdf3841436c22d9301e50bf6043d2e
   languageName: node
   linkType: hard
 

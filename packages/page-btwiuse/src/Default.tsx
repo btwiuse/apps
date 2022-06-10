@@ -5,6 +5,8 @@ import React from "react";
 
 import { HelpOverlay } from '@polkadot/react-components';
 
+import Xterm from './Xterm';
+
 interface Props {
   className?: string;
 }
@@ -32,6 +34,7 @@ function Default({ className }: Props): React.ReactElement<Props> {
       <div className="ui--row">
         <p>baz</p>
       </div>
+      <Xterm />
     </div>
   );
 }
