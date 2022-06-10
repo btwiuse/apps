@@ -33,11 +33,9 @@ function Apps ({ className = '' }: Props): React.ReactElement<Props> {
       <GlobalStyle uiHighlight={uiHighlight} />
       <div className={`apps--Wrapper theme--${theme} ${className}`}>
         <Menu />
-        <div>
-            <Content />
-          <ConnectingOverlay />
-          <div id={PORTAL_ID} />
-        </div>
+        <Content/>
+        <ConnectingOverlay />
+        <div id={PORTAL_ID} />
       </div>
       <WarmUp />
     </>
