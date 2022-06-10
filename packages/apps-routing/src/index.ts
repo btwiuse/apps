@@ -10,6 +10,7 @@ import type { Routes } from './types';
 //import claims from './claims';
 import utilities from './utilities';
 import btwiuse from './btwiuse';
+import js from './js';
 
 /*
 import addresses from './addresses';
@@ -24,7 +25,6 @@ import explorer from './explorer';
 import extrinsics from './extrinsics';
 import files from './files';
 import gilt from './gilt';
-import js from './js';
 //import membership from './membership';
 import nfts from './nfts';
 import parachains from './parachains';
@@ -48,6 +48,7 @@ export default function create (t: TFunction): Routes {
     //claims(t),
     btwiuse(t),
     utilities(t),
+    js(t),
   ]
   /*
   return [
@@ -76,7 +77,6 @@ export default function create (t: TFunction): Routes {
     signing(t),
     sudo(t),
     files(t),
-    js(t),
   ];
   */
 }

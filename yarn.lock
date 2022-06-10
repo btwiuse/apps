@@ -2716,6 +2716,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@polkadot/app-js@workspace:packages/page-js":
+  version: 0.0.0-use.local
+  resolution: "@polkadot/app-js@workspace:packages/page-js"
+  dependencies:
+    "@babel/runtime": ^7.18.3
+    "@polkadot/react-components": ^0.116.2-14
+  languageName: unknown
+  linkType: soft
+
 "@polkadot/app-utilities@workspace:packages/page-utilities":
   version: 0.0.0-use.local
   resolution: "@polkadot/app-utilities@workspace:packages/page-utilities"
@@ -3037,7 +3046,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@polkadot/react-components@^0.116.2-15, @polkadot/react-components@workspace:packages/react-components":
+"@polkadot/react-components@^0.116.2-14, @polkadot/react-components@^0.116.2-15, @polkadot/react-components@workspace:packages/react-components":
   version: 0.0.0-use.local
   resolution: "@polkadot/react-components@workspace:packages/react-components"
   dependencies:
