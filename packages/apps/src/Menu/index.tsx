@@ -5,7 +5,7 @@ import type { TFunction } from 'i18next';
 import type { Routes } from '@polkadot/apps-routing/types';
 import type { Group, Groups, ItemRoute } from './types';
 
-import React, { useMemo, useRef } from 'react';
+import React, { useMemo, useRef, Suspense } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -23,13 +23,13 @@ interface Props {
 function createExternals (t: TFunction): ItemRoute[] {
   return [
     {
-      href: 'https://github.com/btwiuse/apps',
+      href: 'https://github.com/btwiuse/subshell',
       icon: 'code-branch',
       name: 'github',
       text: t<string>('nav.github', 'GitHub', { ns: 'apps-routing' })
     },
     {
-      href: 'https://wiki.polkadot.network',
+      href: 'https://github.com/btwiuse/subshell/wiki',
       icon: 'book',
       name: 'wiki',
       text: t<string>('nav.wiki', 'Wiki', { ns: 'apps-routing' })
@@ -95,7 +95,9 @@ function Menu ({ className = '' }: Props): React.ReactElement<Props> {
     <div className={`${className} highlight--bg`}>
       <div className='menuContainer'>
         <div className='menuSection'>
-          <ChainInfo />
+          <Suspense fallback={<p>Loading</p>}>
+            <ChainInfo />
+          </Suspense>
           <ul className='menuItems'>
             {visibleGroups.map(({ name, routes }): React.ReactNode => (
               <Grouping
@@ -107,7 +109,7 @@ function Menu ({ className = '' }: Props): React.ReactElement<Props> {
             ))}
           </ul>
         </div>
-        <div className='menuSection media--600'>
+        <div className='menuSection media--700'>
           <ul className='menuItems'>
             {externalRef.current.map((route): React.ReactNode => (
               <Item

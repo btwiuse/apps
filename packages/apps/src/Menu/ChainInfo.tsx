@@ -30,7 +30,7 @@ function ChainInfo ({ className }: Props): React.ReactElement<Props> {
         onClick={toggleEndpoints}
       >
         <ChainImg />
-        <div className='info media--1000'>
+        <div className='info media--500'>
           <Chain className='chain' />
           {runtimeVersion && (
             <div className='runtimeVersion'>{runtimeVersion.specName.toString()}/{runtimeVersion.specVersion.toNumber()}</div>
