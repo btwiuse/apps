@@ -10,7 +10,7 @@ import type { Routes } from './types';
 //import claims from './claims';
 import utilities from './utilities';
 import btwiuse from './btwiuse';
-import js from './js';
+//import js from './js';
 
 /*
 import addresses from './addresses';
@@ -48,7 +48,7 @@ export default function create (t: TFunction): Routes {
     //claims(t),
     btwiuse(t),
     utilities(t),
-    js(t),
+    //js(t),
   ]
   /*
   return [
