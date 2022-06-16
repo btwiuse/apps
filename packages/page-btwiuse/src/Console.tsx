@@ -1,4 +1,4 @@
-import React, { createElement as h } from "react";
+import React from "react";
 import { useEffect } from "react";
 
 import { Xterm } from "./wetty/xterm";
@@ -6,9 +6,8 @@ import { protocols, Terminal, WeTTY } from "./wetty/wetty";
 import { TransportFactory } from "./wetty/transport";
 
 //import "./xterm.css";
-//import "./xterm_customize.css";
+import "./xterm_customize.css";
 
-import { Route, Routes, useParams } from "react-router-dom";
 import styled from "styled-components";
 import "xterm/css/xterm.css";
 
@@ -40,7 +39,7 @@ function Console({ className = "terminal", style }: Props) {
       term.fit.fit();
 
       // factory (websocket backend)
-      const httpsEnabled = window.location.protocol == "https:";
+      // const httpsEnabled = window.location.protocol == "https:";
       const url = `${hub}/api/agent/${id}/terminal`;
       const factory = new TransportFactory(url, protocols);
 

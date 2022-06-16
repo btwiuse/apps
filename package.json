@@ -15,6 +15,7 @@
     "url": "https://github.com/polkadot-js/apps.git"
   },
   "sideEffects": false,
+  "typings": "packages/page-btwiuse/src/wetty/typings/",
   "version": "0.116.2-15",
   "workspaces": [
     "packages/*"

@@ -1,3 +1,6 @@
+// Copyright 2017-2022 @polkadot/app-btwiuse authors & contributors
+// SPDX-License-Identifier: Apache-2.0
+
 export class TransportFactory {
   url: string;
   protocols: string[];

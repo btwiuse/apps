@@ -1,3 +1,6 @@
+// Copyright 2017-2022 @polkadot/app-btwiuse authors & contributors
+// SPDX-License-Identifier: Apache-2.0
+
 import { Terminal } from "xterm";
 import { FitAddon } from "xterm-addon-fit";
 import { Unicode11Addon } from "xterm-addon-unicode11";

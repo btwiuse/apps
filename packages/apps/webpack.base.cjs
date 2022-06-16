@@ -61,6 +61,14 @@ function createWebpack (context, mode = 'production') {
           ]
         },
         {
+          include: /packages/,
+          test: /\.css$/,
+          use: [
+            MiniCssExtractPlugin.loader,
+            require.resolve('css-loader')
+          ]
+        },
+        {
           exclude: /(node_modules)/,
           test: /\.(js|mjs|ts|tsx)$/,
           use: [

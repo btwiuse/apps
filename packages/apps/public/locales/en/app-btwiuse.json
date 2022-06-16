@@ -1,6 +1,7 @@
 {
   "Arch": "Arch",
   "Btwiuse": "Btwiuse",
+  "Console": "Console",
   "Detection on the input string to determine if it is hex or non-hex.": "Detection on the input string to determine if it is hex or non-hex.",
   "Endpoints": "Endpoints",
   "Gentoo": "Gentoo",

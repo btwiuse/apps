@@ -1,3 +1,6 @@
+// Copyright 2017-2022 @polkadot/app-btwiuse authors & contributors
+// SPDX-License-Identifier: Apache-2.0
+
 export const protocols = ["wetty"];
 
 export interface Terminal {
@@ -10,6 +13,7 @@ export interface Terminal {
   reset(): void;
   deactivate(): void;
   close(): void;
+  fit: {fit: ()=>void};
 }
 
 export interface Transport {
