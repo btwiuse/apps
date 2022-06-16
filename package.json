@@ -86,6 +86,7 @@
     "electron-builder-notarize": "^1.2.0",
     "file-saver": "^2.0.5",
     "i18next-scanner": "^3.1.0",
+    "libdot": "git+https://github.com/btwiuse/libdot.git#v3.0.9",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-is": "^18.1.0",

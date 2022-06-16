@@ -6,9 +6,11 @@ import { Route, Switch } from "react-router";
 
 import { Tabs } from "@polkadot/react-components";
 
-import Hash from "./Hash";
-import Endpoints from "./Endpoints";
+import Console from "./Console";
 import Default from "./Default";
+import Endpoints from "./Endpoints";
+import Hash from "./Hash";
+
 import { useTranslation } from "./translate";
 
 interface Props {
