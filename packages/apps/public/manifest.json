@@ -1,6 +1,6 @@
 {
-  "short_name": "Polkadot Apps",
-  "name": "Apps for interacting with a Polkadot node",
+  "short_name": "SubShell App",
+  "name": "App for interacting with a Substrate node",
   "icons": [
     {
       "src": "favicon.ico",
