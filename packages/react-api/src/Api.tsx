@@ -14,7 +14,7 @@ import store from 'store';
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import { deriveMapCache, setDeriveCache } from '@polkadot/api-derive/util';
 import { ethereumChains, typesBundle, typesChain } from '@polkadot/apps-config';
-import { web3Accounts, web3Enable } from '@polkadot/extension-dapp';
+import { web3Accounts } from '@polkadot/extension-dapp';
 import { TokenUnit } from '@polkadot/react-components/InputNumber';
 import { StatusContext } from '@polkadot/react-components/Status';
 import { useApiUrl, useEndpoint } from '@polkadot/react-hooks';
@@ -317,7 +317,7 @@ function Api ({ apiUrl, children, isElectron, store }: Props): React.ReactElemen
         api.on('disconnected', () => setIsApiConnected(false));
         api.on('error', onError);
         api.on('ready', (): void => {
-          const injectedPromise = web3Enable('SubShell');
+          const injectedPromise = new Promise<InjectedExtension[]>((resolve)=>resolve([]));
 
           injectedPromise
             .then(setExtensions)
