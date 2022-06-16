@@ -8,7 +8,7 @@ import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
 import createRoutes from '@polkadot/apps-routing';
-import { ErrorBoundary, Spinner, StatusContext, TabsContext } from '@polkadot/react-components';
+import { ErrorBoundary, StatusContext, TabsContext } from '@polkadot/react-components';
 import { useApi } from '@polkadot/react-hooks';
 
 import { findMissingApis } from '../endpoint';
@@ -60,41 +60,30 @@ function Content ({ className }: Props): React.ReactElement<Props> {
 
   return (
     <div className={className}>
-      {!missingApis
-        ? (
-          <div className='connecting'>
-            <Spinner label={t<string>('Initializing connection')} />
-          </div>
-        )
-        : (
-          <>
-            <Suspense fallback='...'>
-              <ErrorBoundary trigger={name}>
-                <TabsContext.Provider value={{ icon, text }}>
-                  {missingApis.length
-                    ? (
-                      <NotFound
-                        basePath={`/${name}`}
-                        location={location}
-                        missingApis={missingApis}
-                        onStatusChange={queueAction}
-                      />
-                    )
-                    : (
-                      <Component
-                        basePath={`/${name}`}
-                        location={location}
-                        onStatusChange={queueAction}
-                      />
-                    )
-                  }
-                </TabsContext.Provider>
-              </ErrorBoundary>
-            </Suspense>
-            <Status />
-          </>
-        )
-      }
+      <Suspense fallback='...'>
+	<ErrorBoundary trigger={name}>
+	  <TabsContext.Provider value={{ icon, text }}>
+	    {missingApis && missingApis.length
+	      ? (
+		<NotFound
+		  basePath={`/${name}`}
+		  location={location}
+		  missingApis={missingApis}
+		  onStatusChange={queueAction}
+		/>
+	      )
+	      : (
+		<Component
+		  basePath={`/${name}`}
+		  location={location}
+		  onStatusChange={queueAction}
+		/>
+	      )
+	    }
+	  </TabsContext.Provider>
+	</ErrorBoundary>
+      </Suspense>
+      <Status />
     </div>
   );
 }

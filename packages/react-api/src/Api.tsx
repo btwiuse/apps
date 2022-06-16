@@ -333,9 +333,11 @@ function Api ({ apiUrl, children, isElectron, store }: Props): React.ReactElemen
       .catch(onError);
   }, [apiEndpoint, apiUrl, onError, queuePayload, queueSetTxStatus, store]);
 
+  /*
   if (!value.isApiInitialized) {
     return null;
   }
+  */
 
   return (
     <ApiContext.Provider value={value}>
