@@ -14,9 +14,10 @@ import "xterm/css/xterm.css";
 
 interface Props {
   className?: string;
+  style?: any;
 }
 
-function Console({ className = "terminal" }: Props) {
+function Console({ className = "terminal", style }: Props) {
   const id = "undefined";
   const hub = "wss://subshell.herokuapp.com";
 
@@ -55,9 +56,7 @@ function Console({ className = "terminal" }: Props) {
   });
 
   return (
-    <div id={className}>
-      <h1>Please do not leave any sensitive info here. This online environment is for demo purpose only. Always install the cli or desktop app for personal usage.</h1>
-    </div>
+    <div id={className} style={style}></div>
   );
 }
 

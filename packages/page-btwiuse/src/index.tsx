@@ -29,22 +29,19 @@ function BtwiuseApp({ basePath, className }: Props): React.ReactElement<Props> {
     },
   ]);
 
+  const style = {
+    left: '0',
+    right: '0',
+    bottom: '0',
+    top: '0',
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+  };
+
   return (
     <main className={className}>
-      <Switch>
-        <Route path={`${basePath}/endpoints`}>
-          <Endpoints custom />
-        </Route>
-        <Route path={`${basePath}/arch`}>
-          <Hash />
-        </Route>
-        <Route path={`${basePath}/gentoo`}>
-          <Hash />
-        </Route>
-        <Route>
-          <Console idName="btwiuse-console" />
-        </Route>
-      </Switch>
+      <Console idName="btwiuse-console" style={style}/>
     </main>
   );
 }
