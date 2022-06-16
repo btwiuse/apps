@@ -27,30 +27,10 @@ function BtwiuseApp({ basePath, className }: Props): React.ReactElement<Props> {
       name: "console",
       text: t<string>("Console"),
     },
-    {
-      name: "btwiuse",
-      text: t<string>("Btwiuse"),
-    },
-    {
-      name: "arch",
-      text: t<string>("Arch"),
-    },
-    {
-      name: "endpoints",
-      text: t<string>("Endpoints"),
-    },
-    {
-      name: "gentoo",
-      text: t<string>("Gentoo"),
-    },
   ]);
 
   return (
     <main className={className}>
-      <Tabs
-        basePath={basePath}
-        items={tabsRef.current}
-      />
       <Switch>
         <Route path={`${basePath}/endpoints`}>
           <Endpoints custom />
@@ -61,11 +41,8 @@ function BtwiuseApp({ basePath, className }: Props): React.ReactElement<Props> {
         <Route path={`${basePath}/gentoo`}>
           <Hash />
         </Route>
-        <Route path={`${basePath}/console`}>
-          <Default />
-        </Route>
         <Route>
-          <Console />
+          <Console idName="btwiuse-console" />
         </Route>
       </Switch>
     </main>

@@ -10,6 +10,7 @@ import { TransportFactory } from "./wetty/transport";
 
 import { Route, Routes, useParams } from "react-router-dom";
 import styled from "styled-components";
+import "xterm/css/xterm.css";
 
 interface Props {
   className?: string;
@@ -31,6 +32,11 @@ function Console({ className = "terminal" }: Props) {
       // term (frontend)
       var term: Terminal;
       term = new Xterm(elem);
+
+      window.onresize = () => {
+	term.fit.fit();
+      };
+      term.fit.fit();
 
       // factory (websocket backend)
       const httpsEnabled = window.location.protocol == "https:";
