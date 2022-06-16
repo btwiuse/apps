@@ -19,6 +19,7 @@ export const PORTAL_ID = 'portals';
 
 function Apps ({ className = '' }: Props): React.ReactElement<Props> {
   const { theme } = useContext(ThemeContext as React.Context<ThemeDef>);
+  console.log('theme:', theme);
   const { isDevelopment, specName, systemChain, systemName } = useApi();
 
   const uiHighlight = useMemo(
