@@ -2,9 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import type { TFunction } from 'i18next';
-import type { Route, Routes } from '@polkadot/apps-routing/types';
-import type { ApiProps } from '@polkadot/react-api/types';
-import type { AccountId } from '@polkadot/types/interfaces';
+import type { Routes } from '@polkadot/apps-routing/types';
 import type { Group, Groups, ItemRoute } from './types';
 
 import React, { useMemo, useRef } from 'react';
@@ -12,14 +10,11 @@ import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
 import createRoutes from '@polkadot/apps-routing';
-import { useAccounts, useApi, useCall, useTeleport } from '@polkadot/react-hooks';
 
-import { findMissingApis } from '../endpoint';
 import { useTranslation } from '../translate';
 import ChainInfo from './ChainInfo';
 import Grouping from './Grouping';
 import Item from './Item';
-import NodeInfo from './NodeInfo';
 
 interface Props {
   className?: string;
@@ -42,27 +37,7 @@ function createExternals (t: TFunction): ItemRoute[] {
   ];
 }
 
-function checkVisible ({ api, isApiConnected, isApiReady, isDevelopment: isApiDevelopment }: ApiProps, allowTeleport: boolean, hasAccounts: boolean, hasSudo: boolean, { isDevelopment, isHidden, needsAccounts, needsApi, needsApiCheck, needsApiInstances, needsSudo, needsTeleport }: Route['display']): boolean {
-  if (isHidden) {
-    return false;
-  } else if (needsAccounts && !hasAccounts) {
-    return false;
-  } else if (!needsApi) {
-    return true;
-  } else if (!isApiReady || !isApiConnected) {
-    return false;
-  } else if (needsSudo && !hasSudo) {
-    return false;
-  } else if (needsTeleport && !allowTeleport) {
-    return false;
-  } else if (!isApiDevelopment && isDevelopment) {
-    return false;
-  }
-
-  return findMissingApis(api, needsApi, needsApiInstances, needsApiCheck).length === 0;
-}
-
-function extractGroups (routing: Routes, groupNames: Record<string, string>, apiProps: ApiProps, allowTeleport: boolean, hasAccounts: boolean, hasSudo: boolean): Group[] {
+function extractGroups (routing: Routes, groupNames: Record<string, string>): Group[] {
   return Object
     .values(
       routing.reduce((all: Groups, route): Groups => {
@@ -80,19 +55,13 @@ function extractGroups (routing: Routes, groupNames: Record<string, string>, api
     )
     .map(({ name, routes }): Group => ({
       name,
-      routes: routes.filter(({ display }) =>
-        checkVisible(apiProps, allowTeleport, hasAccounts, hasSudo, display)
-      )
+      routes,
     }))
     .filter(({ routes }) => routes.length);
 }
 
 function Menu ({ className = '' }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
-  const { allAccounts, hasAccounts } = useAccounts();
-  const apiProps = useApi();
-  const { allowTeleport } = useTeleport();
-  const sudoKey = useCall<AccountId>(apiProps.isApiReady && apiProps.api.query.sudo?.key);
   const location = useLocation();
 
   const externalRef = useRef(createExternals(t));
@@ -101,6 +70,8 @@ function Menu ({ className = '' }: Props): React.ReactElement<Props> {
   const groupRef = useRef({
     accounts: t('Accounts'),
     btwiuse: t('Btwiuse'),
+    console: t('Console'),
+    subshell: t('SubShell'),
     developer: t('Developer'),
     files: t('Files'),
     governance: t('Governance'),
@@ -108,14 +79,9 @@ function Menu ({ className = '' }: Props): React.ReactElement<Props> {
     settings: t('Settings')
   });
 
-  const hasSudo = useMemo(
-    () => !!sudoKey && allAccounts.some((a) => sudoKey.eq(a)),
-    [allAccounts, sudoKey]
-  );
-
   const visibleGroups = useMemo(
-    () => extractGroups(routeRef.current, groupRef.current, apiProps, allowTeleport, hasAccounts, hasSudo),
-    [allowTeleport, apiProps, hasAccounts, hasSudo]
+    () => extractGroups(routeRef.current, groupRef.current),
+    []
   );
 
   const activeRoute = useMemo(
@@ -126,7 +92,7 @@ function Menu ({ className = '' }: Props): React.ReactElement<Props> {
   );
 
   return (
-    <div className={`${className}${(!apiProps.isApiReady || !apiProps.isApiConnected) ? ' isLoading' : ''} highlight--bg`}>
+    <div className={`${className} highlight--bg`}>
       <div className='menuContainer'>
         <div className='menuSection'>
           <ChainInfo />
@@ -141,7 +107,7 @@ function Menu ({ className = '' }: Props): React.ReactElement<Props> {
             ))}
           </ul>
         </div>
-        <div className='menuSection media--1200'>
+        <div className='menuSection media--600'>
           <ul className='menuItems'>
             {externalRef.current.map((route): React.ReactNode => (
               <Item
@@ -153,7 +119,6 @@ function Menu ({ className = '' }: Props): React.ReactElement<Props> {
             ))}
           </ul>
         </div>
-        <NodeInfo className='media--1400' />
       </div>
     </div>
   );
