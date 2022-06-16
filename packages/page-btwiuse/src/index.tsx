@@ -22,6 +22,10 @@ function BtwiuseApp({ basePath, className }: Props): React.ReactElement<Props> {
   const tabsRef = useRef([
     {
       isRoot: true,
+      name: "console",
+      text: t<string>("Console"),
+    },
+    {
       name: "btwiuse",
       text: t<string>("Btwiuse"),
     },
@@ -55,8 +59,11 @@ function BtwiuseApp({ basePath, className }: Props): React.ReactElement<Props> {
         <Route path={`${basePath}/gentoo`}>
           <Hash />
         </Route>
-        <Route>
+        <Route path={`${basePath}/console`}>
           <Default />
+        </Route>
+        <Route>
+          <Console />
         </Route>
       </Switch>
     </main>
