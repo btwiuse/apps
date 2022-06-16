@@ -28,6 +28,8 @@ export class Xterm {
       fontFamily:
         "DejaVu Sans Mono, Everson Mono, FreeMono, Menlo, Terminal, monospace, Apple Symbols",
       allowTransparency: true,
+      cursorStyle: 'underline',
+      cursorBlink: true,
     });
     this.fit = new FitAddon();
     this.decoder = new UTF8Decoder();
