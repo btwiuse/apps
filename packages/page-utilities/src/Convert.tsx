@@ -94,6 +94,8 @@ function Addresses ({ className }: Props): React.ReactElement<Props> {
           label={t<string>('address prefix')}
           onChange={setPrefix}
           options={prefixOptions}
+          onSearch={(filteredOptions: any[], query: string) => prefixOptions}
+          allowAdd
         />
       </div>
       {address && (
