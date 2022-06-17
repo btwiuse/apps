@@ -6,10 +6,6 @@ import { FitAddon } from "xterm-addon-fit";
 import { Unicode11Addon } from "xterm-addon-unicode11";
 import { WebLinksAddon } from "xterm-addon-web-links";
 
-// https://stackoverflow.com/questions/30106476/using-javascripts-atob-to-decode-base64-doesnt-properly-decode-utf-8-strings
-// the Uatob solution works well except when you receive only part of a multi-byte character
-// that's why we need UTF8Decoder
-
 export class Xterm {
   elem: HTMLElement;
   term: Terminal;
@@ -19,6 +15,8 @@ export class Xterm {
   message: HTMLElement;
   messageTimeout: number;
   messageTimer?: number;
+  cmd?: string[];
+  env?: {[key: string]: string};
 
   constructor(elem: HTMLElement) {
     this.elem = elem;
@@ -118,6 +116,14 @@ export class Xterm {
   reset(): void {
     this.removeMessage();
     this.term.clear();
+  }
+
+  setCmd(c: string[]): void {
+    this.cmd = c
+  }
+
+  setEnv(e: {[key: string]: string}): void {
+    this.env = e
   }
 
   close(): void {

@@ -39,7 +39,7 @@ export class Transport {
   }
 
   resize(cols: number, rows: number) {
-    var json = JSON.stringify({
+    let json = JSON.stringify({
       "version": 2,
       "width": cols,
       "height": rows,
@@ -47,13 +47,25 @@ export class Transport {
     this.ws.send(this.str2ab(json + "\n"));
   }
 
+  resizeWithCmdEnv(x: {cols: number, rows: number, cmd?: string[], env?: {[key: string]: string}}) {
+    let y: any = {
+      "version": 2,
+      "width": x.cols,
+      "height": x.rows,
+    };
+    if (x.cmd) y.command = x.cmd;
+    if (x.env) y.env = x.env;
+    let json = JSON.stringify(y);
+    this.ws.send(this.str2ab(json + "\n"));
+  }
+
   input(data: string) {
     // https://stackoverflow.com/a/29202760/4602592
-    var size = 4000;
-    var numChunks = Math.ceil(data.length / size);
+    let size = 4000;
+    let numChunks = Math.ceil(data.length / size);
     for (let i = 0, o = 0; i < numChunks; ++i, o += size) {
-      var chunk = data.substr(o, size);
-      var json = JSON.stringify([0, "i", chunk]);
+      let chunk = data.substr(o, size);
+      let json = JSON.stringify([0, "i", chunk]);
       this.ws.send(this.str2ab(json + "\n"));
     }
   }
