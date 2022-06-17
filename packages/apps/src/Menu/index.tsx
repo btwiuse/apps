@@ -24,16 +24,10 @@ interface Props {
 function createExternals (t: TFunction): ItemRoute[] {
   return [
     {
-      href: 'https://github.com/btwiuse/subshell',
-      icon: 'code-branch',
-      name: 'github',
-      text: t<string>('nav.github', 'GitHub', { ns: 'apps-routing' })
-    },
-    {
-      href: 'https://github.com/btwiuse/subshell/wiki',
+      href: 'https://doc.subshell.xyz',
       icon: 'book',
-      name: 'wiki',
-      text: t<string>('nav.wiki', 'Wiki', { ns: 'apps-routing' })
+      name: 'Documentation',
+      text: t<string>('nav.wiki', 'Documentation', { ns: 'apps-routing' })
     }
   ];
 }
