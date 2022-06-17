@@ -40,10 +40,12 @@ export interface TransportFactory {
 }
 
 export class WeTTY {
+  decoder: TextDecoder;
   term: Terminal;
   transportFactory: TransportFactory;
 
   constructor(term: Terminal, transportFactory: TransportFactory) {
+    this.decoder = new TextDecoder();
     this.term = term;
     this.transportFactory = transportFactory;
   }
@@ -76,10 +78,7 @@ export class WeTTY {
       });
 
       transport.onMessage((event) => {
-        const ab2str: (buf: ArrayBuffer) => string = (buf) => {
-          return String.fromCharCode(...new Uint8Array(buf));
-        };
-        var json = JSON.parse(ab2str(event.data));
+        var json = JSON.parse(this.decoder.decode(event.data));
         this.term.output(json[2]);
       });
 
