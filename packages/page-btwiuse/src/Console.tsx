@@ -20,7 +20,7 @@ function Console({ className = "terminal", style }: Props) {
   const hub = "wss://subshell.herokuapp.com";
 
   useEffect(() => {
-    console.log("new apiUrl", settings.get().apiUrl);
+    const { apiUrl } = settings.get();
     const elem = document.getElementById(className);
 
     if (elem !== null) {
@@ -32,6 +32,7 @@ function Console({ className = "terminal", style }: Props) {
       // term (frontend)
       var term: Terminal;
       term = new Xterm(elem);
+      term.setCmd(["subsh", "--provider", apiUrl]);
 
       window.onresize = () => {
 	term.fit.fit();
