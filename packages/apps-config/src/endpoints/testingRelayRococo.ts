@@ -91,10 +91,11 @@ export const testParasRococo: EndpointOption[] = [
   },
   {
     info: 'rococoGM',
+    isUnreachable: true,
     paraId: 3019,
     text: 'GM Parachain',
     providers: {
-      'GM or Die DAO': 'wss://rococo.gmordie.com'
+      // 'GM or Die DAO': 'wss://rococo.gmordie.com' // https://github.com/polkadot-js/apps/issues/7716
     }
   },
   {
@@ -165,7 +166,7 @@ export const testParasRococo: EndpointOption[] = [
   },
   {
     info: 'rococoKilt',
-    paraId: 2015,
+    paraId: 2086,
     text: 'RILT',
     providers: {
       'KILT Protocol': 'wss://rococo.kilt.io'
