@@ -17,6 +17,7 @@ export interface Terminal {
   env?: {[key: string]: string};
   setCmd(c: string[]): void;
   setEnv(c: {[key: string]: string}): void;
+  fit: {fit: ()=>void};
 }
 
 export interface Transport {
