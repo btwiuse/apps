@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { Xterm } from "./wetty/xterm";
 import { protocols, Terminal, WeTTY } from "./wetty/wetty";
 import { TransportFactory } from "./wetty/transport";
+import { settings } from '@polkadot/ui-settings';
 
 import styled from "styled-components";
 import "xterm/css/xterm.css";
@@ -19,6 +20,7 @@ function Console({ className = "terminal", style }: Props) {
   const hub = "wss://subshell.herokuapp.com";
 
   useEffect(() => {
+    console.log("new apiUrl", settings.get().apiUrl);
     const elem = document.getElementById(className);
 
     if (elem !== null) {

@@ -5,7 +5,6 @@
     "composite": false
   },
   "include": [
-    "libdot.d.ts",
     "packages/**/src/**/*"
   ],
   "exclude": [

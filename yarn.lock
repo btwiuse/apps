@@ -13041,13 +13041,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"libdot@git+https://github.com/btwiuse/libdot.git#v3.0.9":
-  version: 3.0.0
-  resolution: "libdot@https://github.com/btwiuse/libdot.git#commit=43906f958d6e7e61019e68696b7bb83f748636aa"
-  checksum: b8170124d38bec5ee85d0856e20d3d3a6508dd78a6df8411d46a93b0b5bbc8e769a1279fbf05dface3a047954063de660b2c1a89a5e125a2894efb1b412e12eb
-  languageName: node
-  linkType: hard
-
 "line-reader@npm:^0.2.4":
   version: 0.2.4
   resolution: "line-reader@npm:0.2.4"
@@ -15353,7 +15346,6 @@ __metadata:
     electron-builder-notarize: ^1.2.0
     file-saver: ^2.0.5
     i18next-scanner: ^3.1.0
-    libdot: "git+https://github.com/btwiuse/libdot.git#v3.0.9"
     react: ^18.1.0
     react-dom: ^18.1.0
     react-is: ^18.1.0
