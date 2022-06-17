@@ -15,6 +15,7 @@ import { useTranslation } from '../translate';
 import ChainInfo from './ChainInfo';
 import Grouping from './Grouping';
 import Item from './Item';
+import NodeInfo from './NodeInfo';
 
 interface Props {
   className?: string;
@@ -109,7 +110,7 @@ function Menu ({ className = '' }: Props): React.ReactElement<Props> {
             ))}
           </ul>
         </div>
-        <div className='menuSection media--700'>
+        <div className='menuSection media--800'>
           <ul className='menuItems'>
             {externalRef.current.map((route): React.ReactNode => (
               <Item
@@ -121,6 +122,7 @@ function Menu ({ className = '' }: Props): React.ReactElement<Props> {
             ))}
           </ul>
         </div>
+        <NodeInfo className='media--600' />
       </div>
     </div>
   );

@@ -9,17 +9,12 @@ import styled from 'styled-components';
 import { useApi } from '@polkadot/react-hooks';
 import { NodeName, NodeVersion } from '@polkadot/react-query';
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const pkgJson = require('../../package.json') as { version: string };
-
-const uiInfo = `apps v${pkgJson.version}`;
-
 function NodeInfo ({ className = '' }: Props): React.ReactElement<Props> {
   const { api, isApiReady } = useApi();
 
   return (
-    <div className={`${className} media--1400 highlight--color-contrast ui--NodeInfo`}>
-      {isApiReady && (
+    <div className={`${className} highlight--color-contrast ui--NodeInfo`}>
+      {api && isApiReady && (
        <>
         <div>
           <NodeName />&nbsp;
@@ -30,8 +25,6 @@ function NodeInfo ({ className = '' }: Props): React.ReactElement<Props> {
         </div>
        </>
       )}
-      <div>{api.libraryInfo.replace('@polkadot/', '')}</div>
-      <div>{uiInfo}</div>
     </div>
   );
 }
