@@ -3,7 +3,7 @@
   "bugs": "https://github.com/polkadot-js/apps/issues",
   "description": "An Apps portal into the Polkadot network",
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=16.0.0"
   },
   "homepage": "https://github.com/polkadot-js/apps#readme",
   "license": "Apache-2.0",
