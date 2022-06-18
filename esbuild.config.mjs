@@ -12,7 +12,7 @@ esbuild
     bundle: true,
     outfile: "www/bundle.js",
     loader: {
-      ".md": "file",
+      ".md": "text",
       ".svg": "dataurl",
       ".png": "file",
       ".gif": "file",
