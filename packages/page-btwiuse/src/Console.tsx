@@ -5,6 +5,8 @@ import { Xterm } from "./wetty/xterm";
 import { protocols, Terminal, WeTTY } from "./wetty/wetty";
 import { TransportFactory } from "./wetty/transport";
 import { settings } from '@polkadot/ui-settings';
+import { decodeUrlTypes } from '@polkadot/react-api/urlTypes';
+import store from 'store';
 
 import styled from "styled-components";
 import "xterm/css/xterm.css";
@@ -15,12 +17,22 @@ interface Props {
   style?: any;
 }
 
+function getDevTypes (): Record<string, Record<string, string>> {
+  const types = decodeUrlTypes() || store.get('types', {}) as Record<string, Record<string, string>>;
+  const names = Object.keys(types);
+
+  names.length && console.log('Injected types:', names.join(', '));
+
+  return types;
+}
+
 function Console({ className = "terminal", style }: Props) {
   const id = "undefined";
   const hub = "wss://subshell.herokuapp.com";
 
   useEffect(() => {
     const { apiUrl } = settings.get();
+    const types = getDevTypes();
     const elem = document.getElementById(className);
 
     if (elem !== null) {
@@ -35,10 +47,11 @@ function Console({ className = "terminal", style }: Props) {
       term.setCmd(["subsh", "--provider", apiUrl]);
       term.setEnv({
         'USER_AGENT': window.navigator.userAgent,
+        'TYPES': JSON.stringify(types),
       })
 
       window.onresize = () => {
-	term.fit.fit();
+    	document.getElementById(className) && term.fit.fit();
       };
       term.fit.fit();
 
