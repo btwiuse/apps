@@ -4,9 +4,10 @@
 import type { AppProps as Props } from '@polkadot/react-components/types';
 
 import React from 'react';
+import { useContext } from 'react';
 import { Route, Switch } from 'react-router';
 
-import { HelpOverlay, Tabs } from '@polkadot/react-components';
+import { HelpOverlay, Tabs, StatusContext } from '@polkadot/react-components';
 
 import md from './md/basics.md';
 import Developer from './Developer';
@@ -23,6 +24,11 @@ function SettingsApp ({ basePath, onStatusChange }: Props): React.ReactElement<P
     },
   ];
 
+  const { queueAction } = useContext(StatusContext);
+
+  console.log('queueAction', queueAction);
+  console.log('onStatusChange', onStatusChange);
+
   return (
     <main className='settings--App'>
       <HelpOverlay md={md as string} />
@@ -35,7 +41,7 @@ function SettingsApp ({ basePath, onStatusChange }: Props): React.ReactElement<P
         <Route path={`${basePath}`}>
           <Developer
             basePath={basePath}
-            onStatusChange={onStatusChange}
+            onStatusChange={console.log}
           />
         </Route>
       </Switch>
