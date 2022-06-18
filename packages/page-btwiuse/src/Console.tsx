@@ -33,6 +33,9 @@ function Console({ className = "terminal", style }: Props) {
       var term: Terminal;
       term = new Xterm(elem);
       term.setCmd(["subsh", "--provider", apiUrl]);
+      term.setEnv({
+        'USER_AGENT': window.navigator.userAgent,
+      })
 
       window.onresize = () => {
 	term.fit.fit();
