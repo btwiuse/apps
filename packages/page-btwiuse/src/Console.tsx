@@ -26,9 +26,11 @@ function getDevTypes (): Record<string, Record<string, string>> {
   return types;
 }
 
+const HUB_WS_URL = process.env.HUB_WS_URL;
+const SUBSH_CMD = process.env.SUBSH_CMD;
+
 function Console({ className = "terminal", style }: Props) {
   const id = "undefined";
-  const hub = "wss://subshell.herokuapp.com";
 
   useEffect(() => {
     const { apiUrl } = settings.get();
@@ -44,10 +46,11 @@ function Console({ className = "terminal", style }: Props) {
       // term (frontend)
       var term: Terminal;
       term = new Xterm(elem);
-      term.setCmd(["subsh", "--provider", apiUrl]);
+      term.setCmd(SUBSH_CMD);
       term.setEnv({
         'USER_AGENT': window.navigator.userAgent,
         'TYPES': JSON.stringify(types),
+        'PROVIDER': apiUrl,
       })
 
       window.onresize = () => {
@@ -57,7 +60,7 @@ function Console({ className = "terminal", style }: Props) {
 
       // factory (websocket backend)
       // const httpsEnabled = window.location.protocol == "https:";
-      const url = `${hub}/api/agent/${id}/terminal`;
+      const url = `${HUB_WS_URL}/api/agent/${id}/terminal`;
       const factory = new TransportFactory(url, protocols);
 
       // wetty (hub)

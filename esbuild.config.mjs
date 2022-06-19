@@ -33,8 +33,10 @@ esbuild
     define: {
       "import.meta": true,
       "import.meta.url": "'https://fuck.it'",
-      "process.env.NODE_ENV": isDevServer ? '"development"' : '"production"',
       "process.env.WS_URL": '""',
+      "process.env.NODE_ENV": isDevServer ? '"development"' : '"production"',
+      "process.env.HUB_WS_URL": isDevServer ? '"ws://localhost:8000"' : '"wss://subshell.herokuapp.com"',
+      "process.env.SUBSH_CMD": isDevServer ? '["subsh"]' : '["subsh-loop"]',
     },
     watch: isDevServer && {
       onRebuild(err) {
