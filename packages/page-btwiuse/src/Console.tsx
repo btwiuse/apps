@@ -13,8 +13,9 @@ import "xterm/css/xterm.css";
 import "./xterm_customize.css";
 
 interface Props {
-  className?: string;
+  idName?: string;
   style?: any;
+  isDeno?: boolean;
 }
 
 function getDevTypes (): Record<string, Record<string, string>> {
@@ -28,33 +29,47 @@ function getDevTypes (): Record<string, Record<string, string>> {
 
 const HUB_WS_URL = process.env.HUB_WS_URL;
 const SUBSH_CMD = process.env.SUBSH_CMD;
+const DENO_CMD = process.env.DENO_CMD;
 
-function Console({ className = "terminal", style }: Props) {
+function Console({ idName = "terminal", style, isDeno }: Props) {
   const id = "undefined";
 
   useEffect(() => {
     const { apiUrl } = settings.get();
     const types = getDevTypes();
-    const elem = document.getElementById(className);
+    const elem = document.getElementById(idName);
 
     if (elem !== null) {
       // https://stackoverflow.com/questions/61254372/my-react-component-is-rendering-twice-because-of-strict-mode
       // in React.StrictMode, Terminal got rendered twice on page load,
       // use this trick to maintain idempotency
-      while (elem.childElementCount > 1) elem.removeChild(elem.childNodes[1]);
+      while (elem.childElementCount > 0) elem.removeChild(elem.childNodes[0]);
 
       // term (frontend)
       var term: Terminal;
       term = new Xterm(elem);
-      term.setCmd(SUBSH_CMD);
+      if (isDeno)
+        term.setCmd(DENO_CMD);
+      else
+        term.setCmd(SUBSH_CMD);
       term.setEnv({
         'USER_AGENT': window.navigator.userAgent,
         'TYPES': JSON.stringify(types),
         'PROVIDER': apiUrl,
       })
 
+      let doit: number;
       window.onresize = () => {
-    	document.getElementById(className) && term.fit.fit();
+        if (doit) clearTimeout(doit);
+        doit = setTimeout(()=>{
+          if (document.getElementById(idName)) {
+            term.fit.fit()
+	    console.log({
+	      width: window.innerWidth,
+	      height: window.innerHeight,
+	    })
+          }
+        }, 200)
       };
       term.fit.fit();
 
@@ -75,11 +90,11 @@ function Console({ className = "terminal", style }: Props) {
   });
 
   return (
-    <div id={className} style={style}></div>
+    <div id={idName} style={style}></div>
   );
 }
 
 export default React.memo(
-  styled(Console)(({ className = "terminal" }: Props) => `
+  styled(Console)(({ idName = "terminal" }: Props) => `
 `),
 );

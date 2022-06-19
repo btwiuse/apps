@@ -37,6 +37,7 @@ esbuild
       "process.env.NODE_ENV": isDevServer ? '"development"' : '"production"',
       "process.env.HUB_WS_URL": isDevServer ? '"ws://localhost:8000"' : '"wss://subshell.herokuapp.com"',
       "process.env.SUBSH_CMD": isDevServer ? '["subsh"]' : '["subsh-loop"]',
+      "process.env.DENO_CMD": isDevServer ? '["deno", "repl"]' : '["subsh-deno"]',
     },
     watch: isDevServer && {
       onRebuild(err) {
