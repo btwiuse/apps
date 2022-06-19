@@ -29,8 +29,8 @@ function ChainInfo ({ className }: Props): React.ReactElement<Props> {
         className={`apps--SideBar-logo-inner${canToggle ? ' isClickable' : ''} highlight--color-contrast`}
         onClick={toggleEndpoints}
       >
-        <ChainImg className='media--500'/>
-        <div className='info media--600'>
+        <ChainImg/>
+        <div className='info'>
           <Chain className='chain' />
           {runtimeVersion && (
             <div className='runtimeVersion'>{runtimeVersion.specName.toString()}/{runtimeVersion.specVersion.toNumber()}</div>
