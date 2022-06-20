@@ -23,7 +23,6 @@
   "scripts": {
     "analyze": "yarn clean && BUILD_ANALYZE=1 yarn run build:code && yarn source-map-explorer packages/apps/build/main.*.js",
     "build": "node esbuild.config.mjs && mkdir -p packages/apps/build && cp -r www/* packages/apps/build/",
-    "build:www": "node esbuild.config.mjs && mkdir -p packages/apps/build && cp -r www/* packages/apps/build/",
     "build:code": "NODE_ENV=production yarn polkadot-dev-build-ts",
     "build:devElectronMain": "cd packages/apps-electron && yarn webpack --config webpack.main.cjs",
     "build:devElectronRenderer": "cd packages/apps-electron && yarn webpack --config webpack.renderer.cjs",
@@ -38,6 +37,7 @@
     "build:robohash": "node scripts/robohash.cjs",
     "build:web": "yarn run build:i18n && yarn run build:code",
     "build:webpack": "yarn webpack --config packages/apps/webpack.config.cjs --mode production",
+    "build:www": "node esbuild.config.mjs && mkdir -p packages/apps/build && cp -r www/* packages/apps/build/",
     "build:www2": "rm -rf packages/apps/build && mkdir -p packages/apps/build && yarn run build:i18n && cd packages/apps && yarn webpack --config webpack.config.cjs",
     "ci:chainEndpoints": "NODE_OPTIONS=--max_old_space_size=8192 polkadot-dev-run-test --runInBand packages/apps-config/src/ci/chainEndpoints",
     "ci:chainTypes": "NODE_OPTIONS=--max_old_space_size=8192 polkadot-dev-run-test --runInBand packages/apps-config/src/ci/chainTypes",

@@ -47,7 +47,7 @@ function BtwiuseApp({ basePath, className }: Props): React.ReactElement<Props> {
       <HelpOverlay md={md as string} />
       <Switch>
         <Route path={`${basePath}/deno`}>
-          <Console idName="btwiuse-console" style={Style} isDeno/>
+          <Console idName="btwiuse-deno" style={Style} isDeno/>
         </Route>
         <Route>
           <Console idName="btwiuse-console" style={Style}/>

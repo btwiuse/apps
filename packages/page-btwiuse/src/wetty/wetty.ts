@@ -18,6 +18,7 @@ export interface Terminal {
   setCmd(c: string[]): void;
   setEnv(c: {[key: string]: string}): void;
   fit: {fit: ()=>void};
+  mute(): void;
 }
 
 export interface Transport {
@@ -94,6 +95,7 @@ export class WeTTY {
 
     setup();
     return () => {
+      console.log('transport.close');
       transport.close();
     };
   }

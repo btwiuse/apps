@@ -11,6 +11,7 @@ export class Xterm {
   term: Terminal;
   fit: FitAddon;
   resizeListener: () => void;
+  isMuted: boolean;
 
   message: HTMLElement;
   messageTimeout: number;
@@ -75,6 +76,7 @@ export class Xterm {
   }
 
   showMessage(message: string, timeout: number) {
+    if (this.isMuted) return
     this.message.textContent = message;
     this.elem.appendChild(this.message);
 
@@ -129,5 +131,9 @@ export class Xterm {
   close(): void {
     window.removeEventListener("resize", this.resizeListener);
     this.term.dispose();
+  }
+
+  mute(): void {
+    this.isMuted = true;
   }
 }

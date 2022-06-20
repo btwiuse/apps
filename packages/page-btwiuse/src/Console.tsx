@@ -58,6 +58,18 @@ function Console({ idName = "terminal", style, isDeno }: Props) {
         'PROVIDER': apiUrl,
       })
 
+      term.fit.fit();
+
+      // factory (websocket backend)
+      // const httpsEnabled = window.location.protocol == "https:";
+      const url = `${HUB_WS_URL}/api/agent/${id}/terminal`;
+      const factory = new TransportFactory(url, protocols);
+
+      // wetty (hub)
+      const wt = new WeTTY(term, factory);
+      const closer = wt.open();
+
+      // throttle resize events
       let doit: number;
       window.onresize = () => {
         if (doit) clearTimeout(doit);
@@ -71,21 +83,17 @@ function Console({ idName = "terminal", style, isDeno }: Props) {
           }
         }, 200)
       };
-      term.fit.fit();
-
-      // factory (websocket backend)
-      // const httpsEnabled = window.location.protocol == "https:";
-      const url = `${HUB_WS_URL}/api/agent/${id}/terminal`;
-      const factory = new TransportFactory(url, protocols);
-
-      // wetty (hub)
-      const wt = new WeTTY(term, factory);
-      const closer = wt.open();
 
       window.addEventListener("unload", () => {
         closer();
         term.close();
       });
+
+      return () => {
+        // Anything in here is fired on component unmount.
+        term.mute()
+        closer()
+      }
     }
   });
 
