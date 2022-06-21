@@ -23,6 +23,10 @@ const Style = {
   height: '100%',
 };
 
+const hiddenStyle = {
+  display: 'none',
+};
+
 const md = `# TODO
 
 - integrate docgen tool and render here: https://github.com/polkadot-js/api/blob/master/packages/typegen/src/metadataMd.ts
@@ -54,11 +58,13 @@ function BtwiuseApp({ basePath, className }: Props): React.ReactElement<Props> {
           <Console idName="btwiuse-deno" style={Style} isDeno/>
         </Route>
       </Switch>
+      <div style={hiddenStyle}>
       <Tabs
         basePath={basePath}
         hidden={[]}
         items={items}
       />
+      </div>
     </main>
   );
 }
