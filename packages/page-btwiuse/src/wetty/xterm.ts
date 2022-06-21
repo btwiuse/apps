@@ -75,6 +75,10 @@ export class Xterm {
     this.term.write(data);
   }
 
+  focus(data: string) {
+    this.term.focus();
+  }
+
   showMessage(message: string, timeout: number) {
     if (this.isMuted) return
     this.message.textContent = message;

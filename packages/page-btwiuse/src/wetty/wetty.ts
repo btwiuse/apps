@@ -19,6 +19,7 @@ export interface Terminal {
   setEnv(c: {[key: string]: string}): void;
   fit: {fit: ()=>void};
   mute(): void;
+  focus(): void;
 }
 
 export interface Transport {

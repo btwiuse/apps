@@ -59,6 +59,7 @@ function Console({ idName = "terminal", style, isDeno }: Props) {
       })
 
       term.fit.fit();
+      term.focus();
 
       // factory (websocket backend)
       // const httpsEnabled = window.location.protocol == "https:";
