@@ -5,6 +5,7 @@ import React from "react";
 import { useTranslation } from './translate';
 import { HelpOverlay, Tabs } from '@polkadot/react-components';
 import { Route, Switch } from 'react-router';
+import consts from './consts.md';
 
 import Console from "./Console";
 
@@ -34,23 +35,23 @@ function BtwiuseApp({ basePath, className }: Props): React.ReactElement<Props> {
     {
       isRoot: true,
       name: 'console',
-      text: t<string>('Node.js')
+      text: t<string>('Deno (patched)')
     },
     {
-      name: 'deno',
-      text: t<string>('Deno (Experimental)')
+      name: 'node',
+      text: t<string>('Node.js')
     },
   ];
 
   return (
     <main className={className} style={{...Style, position: 'absolute'}}>
-      <HelpOverlay md={md as string} />
+      <HelpOverlay md={consts as string} />
       <Switch>
-        <Route path={`${basePath}/deno`}>
-          <Console idName="btwiuse-deno" style={Style} isDeno/>
+        <Route path={`${basePath}/node`}>
+          <Console idName="btwiuse-node" style={Style}/>
         </Route>
         <Route>
-          <Console idName="btwiuse-console" style={Style}/>
+          <Console idName="btwiuse-deno" style={Style} isDeno/>
         </Route>
       </Switch>
       <Tabs
