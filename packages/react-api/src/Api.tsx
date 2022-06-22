@@ -335,7 +335,7 @@ function Api ({ apiUrl, children, isElectron, store }: Props): React.ReactElemen
         api.on('disconnected', () => setIsApiConnected(false));
         api.on('error', onError);
         api.on('ready', (): void => {
-          const injectedPromise = web3Enable('polkadot-js/apps');
+          const injectedPromise = web3Enable('Subshell');
 
           injectedPromise
             .then(setExtensions)

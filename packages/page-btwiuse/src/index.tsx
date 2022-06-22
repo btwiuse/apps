@@ -33,8 +33,6 @@ function BtwiuseApp({ basePath, className }: Props): React.ReactElement<Props> {
 
   const { uuid } = useApi();
 
-  console.log(uuid);
-
   const items = [
     {
       isRoot: true,
