@@ -7,12 +7,21 @@ import type { SubmittableExtrinsicFunction } from '@polkadot/api/promise/types';
 import type { LinkOption } from '@polkadot/apps-config/endpoints/types';
 import type { InjectedExtension } from '@polkadot/extension-inject/types';
 
+import { Agent } from './Agent';
+
 // helpers for HOC props
 export type OmitProps<T, K> = Pick<T, Exclude<keyof T, K>>;
 export type SubtractProps<T, K> = OmitProps<T, keyof K>;
 
 export interface BareProps {
   className?: string;
+}
+
+export interface IModalStatus {
+  setValue(x: string | null): void;
+  getValue(): string | null;
+  isOpen: boolean;
+  toggle(): void;
 }
 
 export interface ApiState {
@@ -28,6 +37,9 @@ export interface ApiState {
   systemChain: string;
   systemName: string;
   systemVersion: string;
+  uuid: string;
+  counter: number;
+  agent: Agent;
 }
 
 export interface ApiProps extends ApiState {

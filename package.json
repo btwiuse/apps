@@ -66,6 +66,10 @@
     "test:one": "polkadot-dev-run-test --env browser",
     "test:skipped": "echo 'tests skipped'"
   },
+  "dependencies": {
+    "react-query": "^3.39.1",
+    "uuid": "^8.3.2"
+  },
   "devDependencies": {
     "@crustio/crust-pin": "^1.0.0",
     "@pinata/sdk": "^1.2.1",
@@ -77,6 +81,9 @@
     "@types/react-dom": "^18.2.7",
     "@types/react-router-dom": "^5.3.3",
     "@types/store": "^2.0.2",
+    "@types/styled-components": "^5.1.26",
+    "@types/styled-theming": "^2.2.5",
+    "@types/uuid": "^8.3.4",
     "concurrently": "^8.2.1",
     "devtron": "^1.4.0",
     "dnslink-cloudflare": "^3.0.0",
@@ -84,11 +91,21 @@
     "electron-builder": "23.6.0",
     "electron-builder-notarize": "^1.5.1",
     "extensionless": "^1.4.5",
-    "i18next-scanner": "^4.3.0",
+    "html-loader": "^4.2.0",
+    "i18next-scanner": "^4.1.1",
+    "markdown-loader": "^8.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-is": "^18.2.0",
-    "source-map-explorer": "^2.5.3"
+    "source-map-explorer": "^2.5.3",
+    "styled-components": "^5.3.6",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-subresource-integrity": "^5.2.0-rc.1",
+    "xterm": "^5.1.0",
+    "xterm-addon-fit": "^0.7.0",
+    "xterm-addon-unicode11": "^0.5.0",
+    "xterm-addon-web-links": "^0.8.0"
   },
   "resolutions": {
     "@polkadot/api": "^10.9.1",

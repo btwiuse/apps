@@ -115,15 +115,7 @@ const StyledDiv = styled.div`
     margin-right: auto;
     margin-left: auto;
     width: 100%;
-    padding: 0 1.5rem;
-
-    @media only screen and (max-width: 1100px) {
-      padding: 0 1rem;
-    }
-
-    @media only screen and (max-width: 800px) {
-      padding: 0 0.75rem;
-    }
+    --padding: 0 1.5rem;
   }
 `;
 
