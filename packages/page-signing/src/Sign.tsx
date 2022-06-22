@@ -66,10 +66,13 @@ function Sign ({ className = '' }: Props): React.ReactElement<Props> {
     if (meta.source && isInjected) {
       web3FromSource(meta.source as string)
         .catch((): null => null)
-        .then((injected) => setSigner({
+        .then((injected) => {
+console.log('found injected signer', meta.source, meta, injected);
+setSigner({
           isUsable: isFunction(injected?.signer?.signRaw),
           signer: injected?.signer || null
-        }))
+        });
+})
         .catch(console.error);
     }
   }, [currentPair]);

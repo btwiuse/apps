@@ -1,0 +1,12 @@
+{
+  "Deno (patched)": "Deno (patched)",
+  "Detection on the input string to determine if it is hex or non-hex.": "Detection on the input string to determine if it is hex or non-hex.",
+  "No": "No",
+  "Node.js": "Node.js",
+  "The blake2b 256-bit hash of the actual input data.": "The blake2b 256-bit hash of the actual input data.",
+  "The input data to hash. This can be either specified as a hex value (0x-prefix) or as a string.": "The input data to hash. This can be either specified as a hex value (0x-prefix) or as a string.",
+  "Yes": "Yes",
+  "from the following data": "from the following data",
+  "hex input data": "hex input data",
+  "the resulting hash is": "the resulting hash is"
+}
