@@ -163,6 +163,7 @@ function createWebpack (context, mode = 'production') {
           HUB_WS_URL: mode == "development" ? '"ws://localhost:8000"' : '"wss://subshell.herokuapp.com"',
           SUBSH_CMD: mode == "development" ? '["subsh"]' : '["subsh-loop"]',
           DENO_CMD: mode == "development" ? '["deno", "repl"]' : '["subsh-deno"]',
+          // DENO_CMD: mode == "development" ? '["bash", "-c", "cd ~/subshell/; ./subsh-deno"]' : '["subsh-deno"]',
         }
       }),
       new webpack.optimize.SplitChunksPlugin(),

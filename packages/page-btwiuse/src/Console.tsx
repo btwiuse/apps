@@ -13,6 +13,7 @@ import "xterm/css/xterm.css";
 import "./xterm_customize.css";
 
 interface Props {
+  sessionId?: string;
   idName?: string;
   style?: any;
   isDeno?: boolean;
@@ -31,7 +32,7 @@ const HUB_WS_URL = process.env.HUB_WS_URL;
 const SUBSH_CMD = JSON.parse(JSON.stringify(process.env.SUBSH_CMD));
 const DENO_CMD = JSON.parse(JSON.stringify(process.env.DENO_CMD));
 
-function Console({ idName = "terminal", style, isDeno }: Props) {
+function Console({ idName = "terminal", style, isDeno, sessionId }: Props) {
   const id = "undefined";
 
   useEffect(() => {
@@ -57,6 +58,7 @@ function Console({ idName = "terminal", style, isDeno }: Props) {
       'USER_AGENT': window.navigator.userAgent,
       'TYPES': JSON.stringify(types),
       'PROVIDER': apiUrl,
+      'SESSION_ID': sessionId ?? '',
     })
 
     term.fit.fit();

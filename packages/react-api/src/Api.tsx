@@ -29,6 +29,9 @@ import ApiContext from './ApiContext';
 import registry from './typeRegistry';
 import { decodeUrlTypes } from './urlTypes';
 
+import { v4 as uuidv4 } from 'uuid';
+import { Agent } from './Agent';
+
 interface Props {
   children: React.ReactNode;
   apiUrl: string;
@@ -158,6 +161,8 @@ async function retrieve (api: ApiPromise, injectedPromise: Promise<InjectedExten
     getInjectedAccounts(injectedPromise)
   ]);
 
+  console.log('retrieved', Math.random());
+
   return {
     injectedAccounts: injectedAccounts.filter(({ meta: { source } }) =>
       !DISALLOW_EXTENSIONS.includes(source)
@@ -218,7 +223,18 @@ async function loadOnReady (api: ApiPromise, endpoint: LinkOption | null, inject
 
   setDeriveCache(api.genesisHash.toHex(), deriveMapCache);
 
+  const uuid = uuidv4();
+
+  const agent = new Agent(process.env.HUB_WS_URL!, uuid);
+
+  while (!agent.isReady) {
+    console.log('Not yet');
+    await new Promise((resolve)=>setTimeout(resolve, 300));
+  }
+
   return {
+    agent,
+    uuid,
     apiDefaultTx,
     apiDefaultTxSudo,
     chainSS58,

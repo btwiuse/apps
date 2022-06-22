@@ -7,6 +7,8 @@ import type { LinkOption } from '@polkadot/apps-config/settings/types';
 import type { InjectedExtension } from '@polkadot/extension-inject/types';
 import type { ProviderStats } from '@polkadot/rpc-provider/types';
 
+import { Agent } from './Agent';
+
 // helpers for HOC props
 export type OmitProps<T, K> = Pick<T, Exclude<keyof T, K>>;
 export type SubtractProps<T, K> = OmitProps<T, keyof K>;
@@ -28,6 +30,8 @@ export interface ApiState {
   systemChain: string;
   systemName: string;
   systemVersion: string;
+  uuid: string;
+  agent: Agent;
 }
 
 export interface ApiProps extends ApiState {
