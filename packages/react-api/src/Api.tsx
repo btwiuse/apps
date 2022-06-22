@@ -30,6 +30,9 @@ import { lightSpecs, relaySpecs } from './light/index.js';
 import { statics } from './statics.js';
 import { decodeUrlTypes } from './urlTypes.js';
 
+import { v4 as uuidv4 } from 'uuid';
+import { Agent } from './Agent';
+
 interface Props {
   children: React.ReactNode;
   apiUrl: string;
@@ -114,6 +117,8 @@ async function retrieve (api: ApiPromise, injectedPromise: Promise<InjectedExten
     getInjectedAccounts(injectedPromise)
   ]);
 
+  console.log('retrieved', Math.random());
+
   return {
     injectedAccounts: injectedAccounts.filter(({ meta: { source } }) =>
       !DISALLOW_EXTENSIONS.includes(source)
@@ -182,7 +187,25 @@ async function loadOnReady (api: ApiPromise, endpoint: LinkOption | null, fork: 
 
   setDeriveCache(api.genesisHash.toHex(), deriveMapCache);
 
+  const uuid = uuidv4();
+
+  // const [counter, setCounter] = useState(0);
+
+  let counter = 0;
+  // const incr = setCounter(counter+1);
+  const incr = ()=>{counter++};
+
+  const agent = new Agent(process.env.HUB_WS_URL!, uuid, incr);
+
+  while (!agent.isReady) {
+    console.log('Not yet');
+    await new Promise((resolve)=>setTimeout(resolve, 300));
+  }
+
   return {
+    agent,
+    uuid,
+    counter,
     apiDefaultTx,
     apiDefaultTxSudo,
     chainSS58,
@@ -347,7 +370,7 @@ export function ApiCtxRoot ({ apiUrl, children, isElectron, store: keyringStore 
         statics.api.on('disconnected', () => setIsApiConnected(false));
         statics.api.on('error', onError);
         statics.api.on('ready', (): void => {
-          const injectedPromise = web3Enable('polkadot-js/apps');
+          const injectedPromise = web3Enable('Subshell');
 
           injectedPromise
             .then(setExtensions)

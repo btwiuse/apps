@@ -48,9 +48,12 @@ import transfer from './transfer.js';
 import treasury from './treasury.js';
 import utilities from './utilities.js';
 import whitelist from './whitelist.js';
+import btwiuse from './btwiuse.js';
 
 export default function create (t: TFunction): Routes {
   return [
+    btwiuse(t),
+    ts(t),
     accounts(t),
     addresses(t),
     explorer(t),
