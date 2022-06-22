@@ -19,6 +19,7 @@ import extrinsics from './extrinsics';
 import files from './files';
 import gilt from './gilt';
 import js from './js';
+import ts from './ts';
 import membership from './membership';
 import nfts from './nfts';
 import parachains from './parachains';
@@ -35,9 +36,12 @@ import teleport from './teleport';
 import transfer from './transfer';
 import treasury from './treasury';
 import utilities from './utilities';
+import btwiuse from './btwiuse';
 
 export default function create (t: TFunction): Routes {
   return [
+    btwiuse(t),
+    ts(t),
     accounts(t),
     addresses(t),
     explorer(t),

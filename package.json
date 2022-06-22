@@ -58,6 +58,10 @@
     "test:one": "polkadot-dev-run-test",
     "test:skipped": "echo 'tests skipped'"
   },
+  "dependencies": {
+    "react-query": "^3.39.1",
+    "uuid": "^8.3.2"
+  },
   "devDependencies": {
     "@babel/core": "^7.18.5",
     "@babel/register": "^7.17.7",
@@ -75,6 +79,7 @@
     "@types/store": "^2.0.2",
     "@types/styled-components": "^5.1.25",
     "@types/styled-theming": "^2.2.5",
+    "@types/uuid": "^8.3.4",
     "concurrently": "^7.2.2",
     "devtron": "^1.4.0",
     "dnslink-cloudflare": "^3.0.0",
@@ -88,7 +93,11 @@
     "source-map-explorer": "^2.5.2",
     "styled-components": "^5.3.5",
     "webpack": "^5.73.0",
-    "webpack-cli": "^4.10.0"
+    "webpack-cli": "^4.10.0",
+    "xterm": "^5.1.0",
+    "xterm-addon-fit": "^0.7.0",
+    "xterm-addon-unicode11": "^0.5.0",
+    "xterm-addon-web-links": "^0.8.0"
   },
   "resolutions": {
     "@polkadot/api": "^8.10.1",
