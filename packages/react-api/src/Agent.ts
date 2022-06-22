@@ -44,21 +44,20 @@ function handle(conn: WebSocket, cmd: string) {
 }
 
 function handleMethod(conn: WebSocket, method: string, args: (string | SignerPayloadJSON | SignerPayloadRaw)[] ) {
-  if (method == "reverse") {
-    let arg: string = <string>args[0];
-    let payload = JSON.stringify({
-      output: arg.split('').reverse().join(),
-    }) + `\n`;
-    console.log("sending", payload);
-    conn.send(encoder.encode(payload));
-  }
-  if (method == "ls") {
+  if (method == "web3Accounts") {
     web3Accounts().then((accounts) => {
       let payload = JSON.stringify({
         output: accounts,
       }) + `\n`;
       console.log("sending", payload);
       conn.send(encoder.encode(payload));
+      conn.close()
+    }).catch((e)=>{
+	console.log(e);
+	let payload = JSON.stringify({error: `${e}`}) + `\n`;
+	console.log("sending", payload);
+        conn.send(encoder.encode(payload));
+        conn.close()
     });
   }
   if (method == "signRaw") {
@@ -70,7 +69,14 @@ function handleMethod(conn: WebSocket, method: string, args: (string | SignerPay
         let payload = JSON.stringify(out) + `\n`;
         console.log("sending", payload);
         conn.send(encoder.encode(payload));
+        conn.close()
       });
+    }).catch((e)=>{
+	console.log(e);
+	let payload = JSON.stringify({error: `${e}`}) + `\n`;
+	console.log("sending", payload);
+        conn.send(encoder.encode(payload));
+        conn.close()
     });
   }
   if (method == "signPayload") {
@@ -82,44 +88,55 @@ function handleMethod(conn: WebSocket, method: string, args: (string | SignerPay
 	let payload = JSON.stringify(out) + `\n`;
 	console.log("sending", payload);
 	conn.send(encoder.encode(payload));
+        conn.close()
       });
+    }).catch((e)=>{
+	console.log(e);
+	let payload = JSON.stringify({error: `${e}`}) + `\n`;
+	console.log("sending", payload);
+        conn.send(encoder.encode(payload));
+        conn.close()
     });
   }
 }
 
 export class Agent {
   public isReady = false;
+  public WS_URL: string;
+  public WS_URL_ID: string;
+  public HEADER: string;
+
   constructor(base: string, id: string) {
-    const WS_URL = `${base}/api/rpc`;
-
-    const WS_URL_ID = `${base}/api/jsonl?id=${id}`;
-
-    const HEADER = JSON.stringify({
+    this.WS_URL = `${base}/api/rpc`;
+    this.WS_URL_ID = `${base}/api/jsonl?id=${id}`;
+    this.HEADER = JSON.stringify({
       "id": id,
       "name": `name_of_${id}`,
       "tags": [],
       "meta": META,
       "version": VERSION,
     }) + "\n";
+    this.listen();
+  }
 
+  listen() {
     // new websocket connection
-    let ws = new WebSocket(WS_URL);
+    let ws = new WebSocket(this.WS_URL);
 
     ws.binaryType = "arraybuffer";
 
     // register as agent
     ws.onopen = (e: Event) => {
-      console.log("sending HEADER", HEADER);
-      ws.send(encoder.encode(HEADER));
-      console.log("sent HEADER");
+      // console.log("sending HEADER", this.HEADER);
+      ws.send(encoder.encode(this.HEADER));
+      // console.log("sent HEADER");
     };
 
     ws.onclose = (e: CloseEvent) => {
       console.log("closed", e);
-    };
-
-    ws.onerror = (e: Event) => {
-      console.log("errord", e);
+      setTimeout(()=>{
+        this.listen()
+      }, 1000)
     };
 
     ws.onmessage = (e: MessageEvent) => {
@@ -130,7 +147,7 @@ export class Agent {
         ws.send(encoder.encode(`PONG\n`));
       }
       if (cmd == "JSONL\n") {
-        let conn = new WebSocket(WS_URL_ID);
+        let conn = new WebSocket(this.WS_URL_ID);
         conn.binaryType = "blob";
         conn.onmessage = async (e) => {
           let data = await e.data.text();
