@@ -18,6 +18,8 @@
       "@polkadot/app-assets/*": ["page-assets/src/*"],
       "@polkadot/app-bounties": ["page-bounties/src"],
       "@polkadot/app-bounties/*": ["page-bounties/src/*"],
+      "@polkadot/app-btwiuse": ["page-btwiuse/src"],
+      "@polkadot/app-btwiuse/*": ["page-btwiuse/src/*"],
       "@polkadot/app-calendar": ["page-calendar/src"],
       "@polkadot/app-calendar/*": ["page-calendar/src/*"],
       "@polkadot/app-claims": ["page-claims/src"],
