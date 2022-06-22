@@ -133,6 +133,9 @@
       if (window.self !== window.top) {
         window.top.location.href = window.location.href;
       }
+      setInterval(() => {
+        document.title = (new Date().getSeconds() % 2) ? 'Subshell >' : 'Subshell >_';
+      }, 1000);
     </script>
   </body>
 </html>

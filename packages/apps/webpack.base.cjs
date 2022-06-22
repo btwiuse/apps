@@ -40,7 +40,7 @@ function createWebpack (context, mode = 'production') {
           type: 'asset/resource'
         },
         {
-          include: /node_modules/,
+          include: [/node_modules/, /packages/],
           test: /\.css$/,
           use: [
             MiniCssExtractPlugin.loader,
@@ -50,6 +50,13 @@ function createWebpack (context, mode = 'production') {
                 url: false
               }
             }
+          ]
+        },
+        {
+          test: /\.md$/,
+          use: [
+            require.resolve('html-loader'),
+            require.resolve('markdown-loader')
           ]
         },
         {
@@ -135,7 +142,12 @@ function createWebpack (context, mode = 'production') {
       new webpack.DefinePlugin({
         'process.env': {
           NODE_ENV: JSON.stringify(mode),
-          WS_URL: JSON.stringify(process.env.WS_URL)
+          VERSION: JSON.stringify(pkgJson.version),
+          WS_URL: JSON.stringify(process.env.WS_URL),
+          HUB_WS_URL: mode == "development" ? '"ws://localhost:8000"' : '"wss://hub.subshell.xyz"',
+          SUBSH_CMD: mode == "development" ? '["subsh"]' : '["subsh-loop"]',
+          // DENO_CMD: mode == "development" ? '["deno", "repl"]' : '["subsh-deno"]',
+          DENO_CMD: mode == "development" ? '["subsh-deno"]' : '["subsh-deno"]',
         }
       }),
       new webpack.optimize.SplitChunksPlugin(),
