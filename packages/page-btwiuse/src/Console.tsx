@@ -28,7 +28,7 @@ function getDevTypes (): Record<string, Record<string, string>> {
   return types;
 }
 
-const HUB_WS_URL = process.env.HUB_WS_URL;
+const HUB_WS_URL = process.env.HUB_WS_URL!;
 const SUBSH_CMD = JSON.parse(JSON.stringify(process.env.SUBSH_CMD));
 const DENO_CMD = JSON.parse(JSON.stringify(process.env.DENO_CMD));
 
@@ -59,6 +59,7 @@ function Console({ idName = "terminal", style, isDeno, sessionId }: Props) {
       'TYPES': JSON.stringify(types),
       'PROVIDER': apiUrl,
       'SESSION_ID': sessionId ?? '',
+      'HUB': HUB_WS_URL,
     })
 
     term.fit.fit();
