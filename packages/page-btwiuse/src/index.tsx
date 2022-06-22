@@ -6,6 +6,7 @@ import { useTranslation } from './translate';
 import { HelpOverlay, Tabs } from '@polkadot/react-components';
 import { Route, Switch } from 'react-router';
 import consts from './consts.md';
+import { useApi } from '@polkadot/react-hooks';
 
 import Console from "./Console";
 
@@ -30,6 +31,10 @@ const hiddenStyle = {
 function BtwiuseApp({ basePath, className }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
 
+  const { uuid } = useApi();
+
+  console.log(uuid);
+
   const items = [
     {
       isRoot: true,
@@ -47,10 +52,10 @@ function BtwiuseApp({ basePath, className }: Props): React.ReactElement<Props> {
       <HelpOverlay md={consts as string} />
       <Switch>
         <Route path={`${basePath}/node`}>
-          <Console idName="btwiuse-node" style={Style}/>
+          <Console idName="btwiuse-node" style={Style} sessionId={uuid} />
         </Route>
         <Route>
-          <Console idName="btwiuse-deno" style={Style} isDeno/>
+          <Console idName="btwiuse-deno" style={Style} sessionId={uuid} isDeno/>
         </Route>
       </Switch>
       <div style={hiddenStyle}>

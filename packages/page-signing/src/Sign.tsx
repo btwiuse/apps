@@ -68,6 +68,7 @@ function Sign ({ className = '' }: Props): React.ReactElement<Props> {
         .catch((): null => null)
         .then((injected) => {
 console.log('found injected signer', meta.source, meta, injected);
+//window.signer = injected?.signer;
 setSigner({
           isUsable: isFunction(injected?.signer?.signRaw),
           signer: injected?.signer || null

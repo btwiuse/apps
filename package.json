@@ -58,6 +58,9 @@
     "test:one": "polkadot-dev-run-test",
     "test:skipped": "echo 'tests skipped'"
   },
+  "dependencies": {
+    "uuid": "^8.3.2"
+  },
   "devDependencies": {
     "@babel/core": "^7.18.5",
     "@babel/register": "^7.17.7",
@@ -75,6 +78,7 @@
     "@types/store": "^2.0.2",
     "@types/styled-components": "^5.1.25",
     "@types/styled-theming": "^2.2.5",
+    "@types/uuid": "^8.3.4",
     "concurrently": "^7.2.2",
     "devtron": "^1.4.0",
     "dnslink-cloudflare": "^3.0.0",
