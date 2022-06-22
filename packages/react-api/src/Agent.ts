@@ -141,7 +141,7 @@ export class Agent {
 
     ws.onmessage = (e: MessageEvent) => {
       let cmd = decoder.decode(e.data);
-      console.log("recved", cmd);
+      // console.log("recved", cmd);
       if (cmd == "PING\n") {
         this.isReady = true;
         ws.send(encoder.encode(`PONG\n`));
