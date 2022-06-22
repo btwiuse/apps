@@ -30,11 +30,11 @@ const encoder = new TextEncoder();
 const decoder = new TextDecoder();
 
 function handle(conn: WebSocket, cmd: string) {
-  console.log("handling", cmd);
+  // console.log("handling", cmd);
   if (cmd.startsWith("{")) {
     try {
       let json = JSON.parse(cmd);
-      console.log("got json", json);
+      // console.log("got json", json);
       if (json.method) {
         handleMethod(conn, json.method, json.args);
       }
@@ -49,13 +49,13 @@ function handleMethod(conn: WebSocket, method: string, args: (string | SignerPay
       let payload = JSON.stringify({
         output: accounts,
       }) + `\n`;
-      console.log("sending", payload);
+      // console.log("sending", payload);
       conn.send(encoder.encode(payload));
       conn.close()
     }).catch((e)=>{
-	console.log(e);
+	// console.log(e);
 	let payload = JSON.stringify({error: `${e}`}) + `\n`;
-	console.log("sending", payload);
+	// console.log("sending", payload);
         conn.send(encoder.encode(payload));
         conn.close()
     });
@@ -67,14 +67,14 @@ function handleMethod(conn: WebSocket, method: string, args: (string | SignerPay
       if (signer && signer.signRaw)
       signer.signRaw(arg).then((out: SignerResult) => {
         let payload = JSON.stringify(out) + `\n`;
-        console.log("sending", payload);
+        // console.log("sending", payload);
         conn.send(encoder.encode(payload));
         conn.close()
       });
     }).catch((e)=>{
 	console.log(e);
 	let payload = JSON.stringify({error: `${e}`}) + `\n`;
-	console.log("sending", payload);
+	// console.log("sending", payload);
         conn.send(encoder.encode(payload));
         conn.close()
     });
@@ -86,14 +86,14 @@ function handleMethod(conn: WebSocket, method: string, args: (string | SignerPay
       if (signer && signer.signPayload)
       signer.signPayload(arg).then((out: SignerResult) => {
 	let payload = JSON.stringify(out) + `\n`;
-	console.log("sending", payload);
+	// console.log("sending", payload);
 	conn.send(encoder.encode(payload));
         conn.close()
       });
     }).catch((e)=>{
 	console.log(e);
 	let payload = JSON.stringify({error: `${e}`}) + `\n`;
-	console.log("sending", payload);
+	// console.log("sending", payload);
         conn.send(encoder.encode(payload));
         conn.close()
     });
@@ -133,7 +133,7 @@ export class Agent {
     };
 
     ws.onclose = (e: CloseEvent) => {
-      console.log("closed", e);
+      // console.log("closed", e);
       setTimeout(()=>{
         this.listen()
       }, 1000)
@@ -151,7 +151,7 @@ export class Agent {
         conn.binaryType = "blob";
         conn.onmessage = async (e) => {
           let data = await e.data.text();
-          console.log("recv", data);
+          // console.log("recv", data);
           handle(conn, data);
           conn.send(encoder.encode(`${data.length}\n`));
           // let recv = decoder.decode(e.data)
