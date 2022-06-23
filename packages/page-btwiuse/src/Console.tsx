@@ -29,8 +29,9 @@ function getDevTypes (): Record<string, Record<string, string>> {
 }
 
 const HUB_WS_URL = process.env.HUB_WS_URL!;
-const SUBSH_CMD = JSON.parse(JSON.stringify(process.env.SUBSH_CMD));
-const DENO_CMD = JSON.parse(JSON.stringify(process.env.DENO_CMD));
+const HUB_HTTP_URL = HUB_WS_URL.replace('ws', 'http');
+const SUBSH_CMD = process.env.SUBSH_CMD! as unknown as string[];
+const DENO_CMD = process.env.DENO_CMD! as unknown as string[];
 
 interface Agent {
   id: string;
@@ -40,7 +41,7 @@ function fetchAgentsWithCache() {
   let cache: Agent[] = [];
   return async () => {
     if (cache.length == 0) {
-      let res = await fetch("https://www.k0s.io/api/agents/list?tags=Subshell");
+      let res = await fetch(`${HUB_HTTP_URL}/api/agents/list?tags=Subshell`);
       cache = await res.json();
     }
     return cache;

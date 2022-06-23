@@ -225,7 +225,13 @@ async function loadOnReady (api: ApiPromise, endpoint: LinkOption | null, inject
 
   const uuid = uuidv4();
 
-  const agent = new Agent(process.env.HUB_WS_URL!, uuid);
+  // const [counter, setCounter] = useState(0);
+
+  let counter = 0;
+  // const incr = setCounter(counter+1);
+  const incr = ()=>{counter++};
+
+  const agent = new Agent(process.env.HUB_WS_URL!, uuid, incr);
 
   while (!agent.isReady) {
     console.log('Not yet');
@@ -235,6 +241,7 @@ async function loadOnReady (api: ApiPromise, endpoint: LinkOption | null, inject
   return {
     agent,
     uuid,
+    counter,
     apiDefaultTx,
     apiDefaultTxSudo,
     chainSS58,

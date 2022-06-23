@@ -10,6 +10,7 @@ import consts from './consts.md';
 import { useApi } from '@polkadot/react-hooks';
 
 import Console from "./Console";
+import AccountSelector from "./AccountSelector";
 
 interface Props {
   basePath: string;
@@ -61,12 +62,13 @@ function BtwiuseApp({ basePath, className }: Props): React.ReactElement<Props> {
 	  </Route>
 	</Switch>
 	<div style={hiddenStyle}>
-	<Tabs
-	  basePath={basePath}
-	  hidden={[]}
-	  items={items}
-	/>
+	  <Tabs
+	    basePath={basePath}
+	    hidden={[]}
+	    items={items}
+	  />
 	</div>
+	<AccountSelector />
       </QueryClientProvider>
     </main>
   );
