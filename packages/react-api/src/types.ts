@@ -17,6 +17,13 @@ export interface BareProps {
   className?: string;
 }
 
+export interface IModalStatus {
+  setValue(x: string | null): void;
+  getValue(): string | null;
+  isOpen: boolean;
+  toggle(): void;
+}
+
 export interface ApiState {
   apiDefaultTx: SubmittableExtrinsicFunction;
   apiDefaultTxSudo: SubmittableExtrinsicFunction;
@@ -31,6 +38,7 @@ export interface ApiState {
   systemName: string;
   systemVersion: string;
   uuid: string;
+  counter: number;
   agent: Agent;
 }
 
