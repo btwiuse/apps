@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-
+import { useQuery } from "react-query";
 import { Xterm } from "./wetty/xterm";
 import { protocols, Terminal, WeTTY } from "./wetty/wetty";
 import { TransportFactory } from "./wetty/transport";
@@ -32,13 +32,34 @@ const HUB_WS_URL = process.env.HUB_WS_URL!;
 const SUBSH_CMD = JSON.parse(JSON.stringify(process.env.SUBSH_CMD));
 const DENO_CMD = JSON.parse(JSON.stringify(process.env.DENO_CMD));
 
+interface Agent {
+  id: string;
+}
+
+function fetchAgentsWithCache() {
+  let cache: Agent[] = [];
+  return async () => {
+    if (cache.length == 0) {
+      let res = await fetch("https://www.k0s.io/api/agents/list?tags=Subshell");
+      cache = await res.json();
+    }
+    return cache;
+  }
+}
+
 function Console({ idName = "terminal", style, isDeno, sessionId }: Props) {
-  const id = "undefined";
+  const {data} = useQuery("agents", fetchAgentsWithCache());
 
   useEffect(() => {
     const { apiUrl } = settings.get();
     const types = getDevTypes();
     const elem = document.getElementById(idName);
+    let id = "undefined";
+    if (data && data.length > 0) {
+      id = data[0].id;
+    } else {
+      return
+    }
 
     if (elem == null) return;
 
@@ -99,7 +120,7 @@ function Console({ idName = "terminal", style, isDeno, sessionId }: Props) {
       term.mute()
       closer()
     }
-  });
+  }, [data]);
 
   return (
     <div id={idName} style={style}></div>
