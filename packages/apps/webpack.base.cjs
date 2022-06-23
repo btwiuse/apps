@@ -160,10 +160,10 @@ function createWebpack (context, mode = 'production') {
           NODE_ENV: JSON.stringify(mode),
           VERSION: JSON.stringify(pkgJson.version),
           WS_URL: JSON.stringify(process.env.WS_URL),
-          HUB_WS_URL: mode == "development" ? '"ws://localhost:8000"' : '"wss://subshell.herokuapp.com"',
+          HUB_WS_URL: mode == "development" ? '"ws://localhost:8000"' : '"wss://www.k0s.io"',
           SUBSH_CMD: mode == "development" ? '["subsh"]' : '["subsh-loop"]',
           // DENO_CMD: mode == "development" ? '["deno", "repl"]' : '["subsh-deno"]',
-          DENO_CMD: mode == "development" ? '["bash", "-c", "cd ~/subshell/; ./subsh-deno"]' : '["subsh-deno"]',
+          DENO_CMD: mode == "development" ? '["subsh-deno"]' : '["subsh-deno"]',
         }
       }),
       new webpack.optimize.SplitChunksPlugin(),

@@ -59,6 +59,7 @@
     "test:skipped": "echo 'tests skipped'"
   },
   "dependencies": {
+    "react-query": "^3.39.1",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

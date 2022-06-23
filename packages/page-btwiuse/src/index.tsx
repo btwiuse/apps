@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import React from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { useTranslation } from './translate';
 import { HelpOverlay, Tabs } from '@polkadot/react-components';
 import { Route, Switch } from 'react-router';
@@ -23,6 +24,8 @@ const Style = {
   width: '100%',
   height: '100%',
 };
+
+const DefaultQueryClient = new QueryClient()
 
 const hiddenStyle = {
   display: 'none',
@@ -47,22 +50,24 @@ function BtwiuseApp({ basePath, className }: Props): React.ReactElement<Props> {
 
   return (
     <main className={className} style={{...Style, position: 'absolute'}}>
-      <HelpOverlay md={consts as string} />
-      <Switch>
-        <Route path={`${basePath}/node`}>
-          <Console idName="btwiuse-node" style={Style} sessionId={uuid} />
-        </Route>
-        <Route>
-          <Console idName="btwiuse-deno" style={Style} sessionId={uuid} isDeno/>
-        </Route>
-      </Switch>
-      <div style={hiddenStyle}>
-      <Tabs
-        basePath={basePath}
-        hidden={[]}
-        items={items}
-      />
-      </div>
+      <QueryClientProvider client={DefaultQueryClient}>
+	<HelpOverlay md={consts as string} />
+	<Switch>
+	  <Route path={`${basePath}/node`}>
+	    <Console idName="btwiuse-node" style={Style} sessionId={uuid} />
+	  </Route>
+	  <Route>
+	    <Console idName="btwiuse-deno" style={Style} sessionId={uuid} isDeno/>
+	  </Route>
+	</Switch>
+	<div style={hiddenStyle}>
+	<Tabs
+	  basePath={basePath}
+	  hidden={[]}
+	  items={items}
+	/>
+	</div>
+      </QueryClientProvider>
     </main>
   );
 }
