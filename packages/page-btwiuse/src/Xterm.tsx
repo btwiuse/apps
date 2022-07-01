@@ -1,3 +1,6 @@
+// Copyright 2017-2022 @polkadot/app-utilities authors & contributors
+// SPDX-License-Identifier: Apache-2.0
+
 // https://github.com/PrinOrange/web-terminal/blob/master/frontend/src/view/MyTerm.tsx
 
 import { Terminal } from "xterm";

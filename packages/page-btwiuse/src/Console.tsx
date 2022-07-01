@@ -1,3 +1,6 @@
+// Copyright 2017-2022 @polkadot/app-utilities authors & contributors
+// SPDX-License-Identifier: Apache-2.0
+
 import React from "react";
 import { useEffect } from "react";
 import { useQuery } from "react-query";
