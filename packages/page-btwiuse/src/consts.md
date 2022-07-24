@@ -33,10 +33,10 @@
 - sign the message `BTW I USE SUBSHELL` with selected account, and verify the signature
 ```
 > import { signatureVerify } from "@polkadot/util-crypto"
-> const addr = await Subshell.extension.selectAccount()
-> const msg = 'BTW I USE SUBSHELL'
-> const sig = await api.sign(addr, {data: msg})
-> signatureVerify(msg, sig, addr)
+  const addr = await Subshell.extension.selectAccount()
+  const msg = 'BTW I USE SUBSHELL'
+  const sig = await api.sign(addr, {data: msg})
+  signatureVerify(msg, sig, addr)
 ```
 
 - sign and send the tx `api.tx.system.remark('BTW I USE SUBSHELL')` with selected account
