@@ -24,6 +24,7 @@ export class Xterm {
     this.term = new Terminal({
       fontFamily:
         "DejaVu Sans Mono, Everson Mono, FreeMono, Menlo, Terminal, monospace, Apple Symbols",
+      allowProposedApi: true,
       allowTransparency: true,
       cursorStyle: 'underline',
       cursorBlink: true,
