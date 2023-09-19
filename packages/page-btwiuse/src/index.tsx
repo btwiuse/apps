@@ -3,14 +3,14 @@
 
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { useTranslation } from './translate';
-import { HelpOverlay, Tabs } from '@polkadot/react-components';
-import { Route, Switch } from 'react-router';
-import consts from './consts.md';
+import { useTranslation } from './translate.js';
+import { Tabs } from '@polkadot/react-components';
+import { Route } from 'react-router';
+// import consts from './consts.md';
 import { useApi } from '@polkadot/react-hooks';
 
-import Console from "./Console";
-import AccountSelector from "./AccountSelector";
+import Console from "./Console.js";
+import AccountSelector from "./AccountSelector.js";
 
 interface Props {
   basePath: string;
@@ -28,46 +28,15 @@ const Style = {
 
 const DefaultQueryClient = new QueryClient()
 
-const hiddenStyle = {
-  display: 'none',
-};
-
 function BtwiuseApp({ basePath, className }: Props): React.ReactElement<Props> {
   const { t } = useTranslation();
 
   const { uuid } = useApi();
 
-  const items = [
-    {
-      isRoot: true,
-      name: 'console',
-      text: t<string>('Deno (patched)')
-    },
-    {
-      name: 'node',
-      text: t<string>('Node.js')
-    },
-  ];
-
   return (
     <main className={className} style={{...Style, position: 'absolute'}}>
       <QueryClientProvider client={DefaultQueryClient}>
-	<HelpOverlay md={consts as string} />
-	<Switch>
-	  <Route path={`${basePath}/node`}>
-	    <Console idName="btwiuse-node" style={Style} sessionId={uuid} />
-	  </Route>
-	  <Route>
-	    <Console idName="btwiuse-deno" style={Style} sessionId={uuid} isDeno/>
-	  </Route>
-	</Switch>
-	<div style={hiddenStyle}>
-	  <Tabs
-	    basePath={basePath}
-	    hidden={[]}
-	    items={items}
-	  />
-	</div>
+	<Console idName="terminal" style={Style} sessionId={uuid} isDeno/>
 	<AccountSelector />
       </QueryClientProvider>
     </main>

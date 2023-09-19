@@ -2,12 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import type React from 'react';
-import type { ApiPromise } from '@polkadot/api';
-import type { SubmittableExtrinsicFunction } from '@polkadot/api/promise/types';
-import type { LinkOption } from '@polkadot/apps-config/endpoints/types';
-import type { InjectedExtension } from '@polkadot/extension-inject/types';
-
-import { Agent } from './Agent';
+import type { ApiProps, ApiState } from '@polkadot/react-hooks/ctx/types';
 
 // helpers for HOC props
 export type OmitProps<T, K> = Pick<T, Exclude<keyof T, K>>;
@@ -17,44 +12,7 @@ export interface BareProps {
   className?: string;
 }
 
-export interface IModalStatus {
-  setValue(x: string | null): void;
-  getValue(): string | null;
-  isOpen: boolean;
-  toggle(): void;
-}
-
-export interface ApiState {
-  apiDefaultTx: SubmittableExtrinsicFunction;
-  apiDefaultTxSudo: SubmittableExtrinsicFunction;
-  chainSS58: number;
-  hasInjectedAccounts: boolean;
-  isApiReady: boolean;
-  isDevelopment: boolean;
-  isEthereum: boolean;
-  specName: string;
-  specVersion: string;
-  systemChain: string;
-  systemName: string;
-  systemVersion: string;
-  uuid: string;
-  counter: number;
-  agent: Agent;
-}
-
-export interface ApiProps extends ApiState {
-  api: ApiPromise;
-  apiEndpoint: LinkOption | null;
-  apiError: string | null;
-  apiRelay: ApiPromise | null;
-  apiUrl?: string;
-  createLink: (path: string, apiUrl?: string) => string;
-  extensions?: InjectedExtension[];
-  isApiConnected: boolean;
-  isApiInitialized: boolean;
-  isElectron: boolean;
-  isWaitingInjected: boolean;
-}
+export type { ApiProps, ApiState }
 
 export interface OnChangeCbObs {
   next: (value?: any) => any;

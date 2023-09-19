@@ -45,6 +45,7 @@ import treasury from './treasury.js';
 import utilities from './utilities.js';
 import whitelist from './whitelist.js';
 import btwiuse from './btwiuse.js';
+import ts from './ts.js';
 
 export default function create (t: TFunction): Routes {
   return [

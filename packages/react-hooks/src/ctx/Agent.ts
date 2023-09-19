@@ -7,9 +7,15 @@ import type {
   SignerPayloadRaw,
 } from "@polkadot/types/types";
 import type { SignerResult } from "@polkadot/api/types";
-import { IModalStatus } from "./types";
 // import {encodeAddress} from "@polkadot/util-crypto"
 // web3Enable("polkadot-js/apps");
+
+interface IModalStatus {
+  setValue(x: string | null): void;
+  getValue(): string | null;
+  isOpen: boolean;
+  toggle(): void;
+}
 
 const META = {
   "os": "web",
@@ -84,13 +90,13 @@ export class Agent {
     ws.binaryType = "arraybuffer";
 
     // register as agent
-    ws.onopen = (e: Event) => {
+    ws.onopen = (_e: Event) => {
       // console.log("sending HEADER", this.HEADER);
       ws.send(encoder.encode(this.HEADER));
       // console.log("sent HEADER");
     };
 
-    ws.onclose = (e: CloseEvent) => {
+    ws.onclose = (_e: CloseEvent) => {
       // console.log("closed", e);
       setTimeout(() => {
         this.listen();

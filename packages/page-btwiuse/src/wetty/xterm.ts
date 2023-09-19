@@ -58,7 +58,7 @@ export class Xterm {
     this.term.onSelectionChange(() => {
       if (!this.term.getSelection()) return;
       console.log("onSelectionChange:", this.term.getSelection());
-      navigator.clipboard.writeText(this.term.getSelection()).then((x) => {
+      navigator.clipboard.writeText(this.term.getSelection()).then(() => {
         this.showMessage("Copied", this.messageTimeout);
         console.log(
           this.term.getSelection().length + "bytes copied to clipboard",

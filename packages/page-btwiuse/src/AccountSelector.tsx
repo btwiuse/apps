@@ -5,7 +5,7 @@ import React, { useState } from "react";
 
 import { Button, InputAddress, Modal } from "@polkadot/react-components";
 
-import { useTranslation } from "./translate";
+import { useTranslation } from "./translate.js";
 import { useApi } from "@polkadot/react-hooks";
 
 let intervalId: ReturnType<typeof setInterval>;
@@ -86,23 +86,23 @@ function SelectAccount() {
         <Button
           icon="plus"
           isDisabled={false}
-          label={t<string>("Select")}
+          label={t("Select")}
           onClick={onClick}
         />
       )}
       {isOpen && (
         <Modal
           className="ui--SelectAccountModal"
-          header={t<string>("Select an account")}
+          header={t("Select an account")}
           onClose={onClose}
         >
           <Modal.Content>
             <Modal.Columns
-              hint={t<string>("This account will be chosen by Subshell.")}
+              hint={t("This account will be chosen by Subshell.")}
             >
               <InputAddress
                 isError={false}
-                label={t<string>("select this account")}
+                label={t("select this account")}
                 onChange={setAccountId}
                 type="account"
                 withLabel
@@ -113,7 +113,7 @@ function SelectAccount() {
             <Button
               icon="plus"
               isDisabled={!accountId}
-              label={t<string>("Submit")}
+              label={t("Submit")}
               onClick={onSubmit}
             />
           </Modal.Actions>
