@@ -20,6 +20,7 @@ import { web3Accounts, web3Enable } from '@polkadot/extension-dapp';
 import { TokenUnit } from '@polkadot/react-components/InputConsts/units';
 import { useApiUrl, useCoretimeEndpoint, useEndpoint, usePeopleEndpoint, useQueue } from '@polkadot/react-hooks';
 import { ApiCtx } from '@polkadot/react-hooks/ctx/Api';
+import { Agent } from '@polkadot/react-hooks/ctx/Agent';
 import { ApiSigner } from '@polkadot/react-signer/signers';
 import { keyring } from '@polkadot/ui-keyring';
 import { settings } from '@polkadot/ui-settings';
@@ -31,7 +32,6 @@ import { statics } from './statics.js';
 import { decodeUrlTypes } from './urlTypes.js';
 
 import { v4 as uuidv4 } from 'uuid';
-import { Agent } from './Agent';
 
 interface Props {
   children: React.ReactNode;

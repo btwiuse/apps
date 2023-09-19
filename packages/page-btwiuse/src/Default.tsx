@@ -5,7 +5,7 @@ import React from "react";
 
 import { HelpOverlay } from '@polkadot/react-components';
 
-import Xterm from './Xterm';
+import Xterm from './Xterm.jsx';
 
 interface Props {
   className?: string;

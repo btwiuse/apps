@@ -18,6 +18,9 @@
   "dependencies": {
     "@polkadot/hw-ledger": "^13.2.3",
     "@polkadot/hw-ledger-transports": "^13.2.3",
+    "@polkadot/api": "^10.11.1",
+    "@polkadot/extension-compat-metamask": "^0.46.6",
+    "@polkadot/extension-dapp": "^0.46.6",
     "is-ipfs": "^8.0.1"
   },
   "peerDependencies": {
