@@ -16,6 +16,9 @@
   "type": "module",
   "version": "0.133.2-16-x",
   "dependencies": {
+    "@polkadot/api": "^10.11.1",
+    "@polkadot/extension-compat-metamask": "^0.46.6",
+    "@polkadot/extension-dapp": "^0.46.6",
     "@polkadot/hw-ledger": "^12.6.1",
     "@polkadot/hw-ledger-transports": "^12.6.1",
     "is-ipfs": "^8.0.1"

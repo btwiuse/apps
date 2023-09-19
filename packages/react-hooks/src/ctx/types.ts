@@ -8,6 +8,7 @@ import type { LinkOption } from '@polkadot/apps-config/endpoints/types';
 import type { InjectedExtension } from '@polkadot/extension-inject/types';
 import type { ProviderStats } from '@polkadot/rpc-provider/types';
 import type { BlockNumber, EventRecord } from '@polkadot/types/interfaces';
+import { Agent } from './Agent.js';
 
 export interface ApiState {
   apiDefaultTx: SubmittableExtrinsicFunction;
@@ -22,6 +23,9 @@ export interface ApiState {
   systemChain: string;
   systemName: string;
   systemVersion: string;
+  uuid: string;
+  counter: number;
+  agent: Agent;
 }
 
 export interface ApiProps extends ApiState {

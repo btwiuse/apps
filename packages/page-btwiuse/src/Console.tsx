@@ -4,14 +4,14 @@
 import React from "react";
 import { useEffect } from "react";
 import { useQuery } from "react-query";
-import { Xterm } from "./wetty/xterm";
-import { protocols, Terminal, WeTTY } from "./wetty/wetty";
-import { TransportFactory } from "./wetty/transport";
+import { Xterm } from "./wetty/xterm.js";
+import { protocols, WeTTY } from "./wetty/wetty.js";
+import type { Terminal } from "./wetty/wetty.js";
+import { TransportFactory } from "./wetty/transport.js";
 import { settings } from '@polkadot/ui-settings';
 import { decodeUrlTypes } from '@polkadot/react-api/urlTypes';
 import store from 'store';
 
-import styled from "styled-components";
 import "xterm/css/xterm.css";
 import "./xterm_customize.css";
 
@@ -131,7 +131,4 @@ function Console({ idName = "terminal", style, isDeno, sessionId }: Props) {
   );
 }
 
-export default React.memo(
-  styled(Console)(({ idName = "terminal" }: Props) => `
-`),
-);
+export default React.memo(Console);
