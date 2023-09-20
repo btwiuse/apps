@@ -85,6 +85,7 @@ function Console({ idName = "terminal", style, isDeno, sessionId }: Props) {
       'PROVIDER': apiUrl,
       'SESSION_ID': sessionId ?? '',
       'HUB': HUB_WS_URL,
+      'GEAR': 'true',
     })
 
     term.fit.fit();
