@@ -67,6 +67,7 @@
     "test:skipped": "echo 'tests skipped'"
   },
   "dependencies": {
+    "@gear-js/api": "^0.35.1",
     "react-query": "^3.39.1",
     "uuid": "^8.3.2"
   },

@@ -30,6 +30,7 @@ import { statics } from './statics.js';
 import { decodeUrlTypes } from './urlTypes.js';
 
 import { v4 as uuidv4 } from 'uuid';
+import { GearApi } from "@gear-js/api";
 
 interface Props {
   children: React.ReactNode;
@@ -259,7 +260,7 @@ async function createApi (apiUrl: string, signer: ApiSigner, onError: (error: un
       ? await getLightProvider(apiUrl.replace('light://', ''))
       : new WsProvider(apiUrl);
 
-    statics.api = new ApiPromise({
+    statics.api = new GearApi({
       provider,
       registry: statics.registry,
       signer,
