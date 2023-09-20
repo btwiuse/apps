@@ -6,6 +6,7 @@ import type { KeyringInstance } from '@polkadot/keyring/types';
 import type { ApiProps } from '@polkadot/react-api/types';
 import type { AppProps as Props } from '@polkadot/react-components/types';
 import type { Log, LogType, Snippet } from './types.js';
+import { ProgramMetadata } from '@gear-js/api';
 import { web3Enable, isWeb3Injected, web3Accounts, web3FromAddress } from "@polkadot/extension-dapp";
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
@@ -71,6 +72,7 @@ function setupInjected ({ api, isDevelopment }: ApiProps, setIsRunning: (isRunni
     web3Accounts,
     web3Enable,
     web3FromAddress,
+    ProgramMetadata,
     util
   };
 }
