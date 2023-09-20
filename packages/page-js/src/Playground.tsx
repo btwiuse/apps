@@ -53,7 +53,7 @@ function setupInjected ({ api, isDevelopment }: ApiProps, setIsRunning: (isRunni
 
         return result;
       }, { ...DEFAULT_NULL }),
-    api: api.clone(),
+    api,
     console: {
       error: (...args: unknown[]) => hookConsole('error', args),
       log: (...args: unknown[]) => hookConsole('log', args)
