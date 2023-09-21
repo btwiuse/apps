@@ -145,7 +145,6 @@ function Playground ({ basePath, className = '' }: Props): React.ReactElement<Pr
   const _stopJs = useCallback(
     (): void => {
       if (injectedRef.current) {
-        injectedRef.current.api.disconnect().catch(console.error);
         injectedRef.current = null;
       }
 
