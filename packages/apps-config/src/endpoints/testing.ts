@@ -16,7 +16,7 @@ export * from './testingRelayWestend.js';
 //   providers: The actual hosted secure websocket endpoint
 //
 // IMPORTANT: Alphabetical based on text
-export const testChains: Omit<EndpointOption, 'teleport'>[] = [
+export const _testChains: Omit<EndpointOption, 'teleport'>[] = [
   {
     info: '3dpass-testnet',
     providers: {
@@ -1129,6 +1129,32 @@ export const testChains: Omit<EndpointOption, 'teleport'>[] = [
     ui: {
       color: '#00ffcc',
       logo: nodesZeroSVG
+    }
+  }
+];
+
+export const testChains: Omit<EndpointOption, 'teleport'>[] = [
+  {
+    info: 'vara-testnet',
+    providers: {
+      'Gear Tech (Archive)': 'wss://testnet-archive.vara-network.io',
+      'Gear Tech': 'wss://testnet.vara-network.io'
+    },
+    text: 'Vara Testnet',
+    ui: {
+      color: '#00a87a',
+      logo: chainsVaraSVG
+    }
+  },
+  {
+    info: 'vara-vit',
+    providers: {
+      'Gear Tech': 'wss://vit.vara-network.io'
+    },
+    text: 'Vara Incentivized Testnet',
+    ui: {
+      color: '#00a87a',
+      logo: chainsVaraSVG
     }
   }
 ];
