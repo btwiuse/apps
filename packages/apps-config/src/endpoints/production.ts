@@ -16,7 +16,7 @@ export * from './productionRelayPolkadot.js';
 //   providers: The actual hosted secure websocket endpoint
 //
 // IMPORTANT: Alphabetical based on text
-export const prodChains: Omit<EndpointOption, 'teleport'>[] = [
+export const _prodChains: Omit<EndpointOption, 'teleport'>[] = [
   {
     info: '3dpass',
     providers: {
@@ -575,6 +575,21 @@ export const prodChains: Omit<EndpointOption, 'teleport'>[] = [
     ui: {
       color: 'linear-gradient(-90deg, #9400D3 0%, #5A5CA9 50%, #00BFFF 100%)',
       logo: nodesDatahighwayPNG
+    }
+  }
+];
+
+export const prodChains: Omit<EndpointOption, 'teleport'>[] = [
+  {
+    info: 'vara',
+    providers: {
+      'Gear Tech (Archive)': 'wss://archive-rpc.vara-network.io',
+      'Gear Tech': 'wss://rpc.vara-network.io'
+    },
+    text: 'Vara',
+    ui: {
+      color: '#00a87a',
+      logo: chainsVaraSVG
     }
   }
 ];
