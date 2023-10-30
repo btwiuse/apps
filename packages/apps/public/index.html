@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="theme-color" content="#000000">
     <link rel="manifest" href="manifest.json">
-    <link rel="shortcut icon" href="favicon.ico">
+    <link id="favicon" rel="shortcut icon" href="favicon.ico">
     <title><%= htmlWebpackPlugin.options.PAGE_TITLE %></title>
     <script type="text/javascript" src="env-config.js"></script>
     <style>
@@ -133,8 +133,13 @@
       if (window.self !== window.top) {
         window.top.location.href = window.location.href;
       }
+      let productName = "Subshell";
+      if (window.location.host.endsWith('gear.sh')) {
+        document.getElementById("favicon").href = "GearShell.ico"
+        productName = "Gear Shell";
+      }
       setInterval(() => {
-        document.title = (new Date().getSeconds() % 2) ? 'Subshell >' : 'Subshell >_';
+        document.title = (new Date().getSeconds() % 2) ? `${productName} ❯` : `${productName} ❯_`;
       }, 1000);
     </script>
   </body>
