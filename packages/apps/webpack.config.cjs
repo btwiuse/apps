@@ -22,7 +22,7 @@ module.exports = merge(
     plugins: [
       new SubresourceIntegrityPlugin(),
       new HtmlWebpackPlugin({
-        PAGE_TITLE: 'Subshell >_',
+        PAGE_TITLE: '❯',
         minify: false,
         inject: true,
         template: path.join(context, `${hasPublic ? 'public/' : ''}index.html`)
