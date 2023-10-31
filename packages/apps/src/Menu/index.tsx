@@ -25,6 +25,7 @@ interface Props {
 }
 
 function createExternals (t: (key: string, optionsOrText?: string | { replace: Record<string, unknown> }, options?: { ns: string }) => string): ItemRoute[] {
+  return []; // disable external links
   return [
     {
       href: 'https://wiki.subshell.xyz',
