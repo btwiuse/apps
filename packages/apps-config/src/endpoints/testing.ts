@@ -1138,7 +1138,8 @@ export const testChains: Omit<EndpointOption, 'teleport'>[] = [
     info: 'vara-testnet',
     providers: {
       'Gear Tech (Archive)': 'wss://testnet-archive.vara-network.io',
-      'Gear Tech': 'wss://testnet.vara-network.io'
+      'Gear Tech': 'wss://testnet.vara-network.io',
+      'light client': 'light://substrate-connect/vara-testnet'
     },
     text: 'Vara Testnet',
     ui: {
@@ -1149,7 +1150,8 @@ export const testChains: Omit<EndpointOption, 'teleport'>[] = [
   {
     info: 'vara-vit',
     providers: {
-      'Gear Tech': 'wss://vit.vara-network.io'
+      'Gear Tech': 'wss://vit.vara-network.io',
+      'light client': 'light://substrate-connect/vara-vit'
     },
     text: 'Vara Incentivized Testnet',
     ui: {
