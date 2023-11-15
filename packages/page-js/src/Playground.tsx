@@ -7,7 +7,7 @@ import type { ApiProps } from '@polkadot/react-api/types';
 import type { AppProps as Props } from '@polkadot/react-components/types';
 import type { Log, LogType, Snippet } from './types.js';
 import { ProgramMetadata } from '@gear-js/api';
-import { web3Enable, isWeb3Injected, web3Accounts, web3FromAddress } from "@polkadot/extension-dapp";
+import { web3Enable, web3EnablePromise, isWeb3Injected, web3Accounts, web3AccountsSubscribe, web3FromAddress, web3FromSource } from "@polkadot/extension-dapp";
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
@@ -70,8 +70,11 @@ function setupInjected ({ api, isDevelopment }: ApiProps, setIsRunning: (isRunni
       : null,
     isWeb3Injected,
     web3Accounts,
+    web3AccountsSubscribe,
     web3Enable,
+    web3EnablePromise,
     web3FromAddress,
+    web3FromSource,
     ProgramMetadata,
     util
   };
