@@ -68,6 +68,7 @@ function setupInjected ({ api, isDevelopment }: ApiProps, setIsRunning: (isRunni
     uiKeyring: isDevelopment
       ? uiKeyring
       : null,
+    fetch,
     isWeb3Injected,
     web3Accounts,
     web3AccountsSubscribe,
