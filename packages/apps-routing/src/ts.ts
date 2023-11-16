@@ -13,7 +13,7 @@ export default function create (t: TFunction): Route {
     },
     group: 'console',
     icon: 'code',
-    name: 'ts',
-    text: t('nav.js', 'TypeScript', { ns: 'apps-routing' })
+    name: 'playground',
+    text: t('nav.js', 'Playground', { ns: 'apps-routing' })
   };
 }
