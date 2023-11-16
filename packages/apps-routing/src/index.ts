@@ -53,8 +53,8 @@ import ts from './ts.js';
 
 export default function create (t: TFunction): Routes {
   return [
-    btwiuse(t),
     ts(t),
+    btwiuse(t),
     accounts(t),
     addresses(t),
     explorer(t),
