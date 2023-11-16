@@ -25,13 +25,12 @@ interface Props {
 }
 
 function createExternals (t: (key: string, optionsOrText?: string | { replace: Record<string, unknown> }, options?: { ns: string }) => string): ItemRoute[] {
-  return []; // disable external links
   return [
     {
-      href: 'https://wiki.subshell.xyz',
+      href: 'https://github.com/btwiuse/gear.sh/wiki',
       icon: 'book',
       name: 'wiki',
-      text: t('nav.wiki', 'Subshell Wiki', { ns: 'apps-routing' })
+      text: t('nav.wiki', 'Gear Shell Wiki', { ns: 'apps-routing' })
     }
   ];
 }
