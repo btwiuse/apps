@@ -24,6 +24,8 @@ import { CUSTOM_LABEL, STORE_EXAMPLES, STORE_SELECTED } from './constants.js';
 import Output from './Output.js';
 import { useTranslation } from './translate.js';
 
+import useSWR from "swr";
+
 interface Injected {
   api: ApiPromise;
   console: {
@@ -41,7 +43,6 @@ interface Injected {
 const ALLOWED_GLOBALS = ['atob', 'btoa'];
 const DEFAULT_NULL = { Atomics: null, Bluetooth: null, Clipboard: null, Document: null, Function: null, Location: null, ServiceWorker: null, SharedWorker: null, USB: null, global: null, window: null };
 
-const snippets = JSON.parse(JSON.stringify(allSnippets)) as Snippet[];
 let hasSnippetWrappers = false;
 
 function setupInjected ({ api, isDevelopment }: ApiProps, setIsRunning: (isRunning: boolean) => void, hookConsole: (type: LogType, args: unknown[]) => void): Injected {
@@ -83,6 +84,7 @@ function setupInjected ({ api, isDevelopment }: ApiProps, setIsRunning: (isRunni
 
 // FIXME This... ladies & gentlemen, is a mess that should be untangled
 function Playground ({ basePath, className = '' }: Props): React.ReactElement<Props> {
+  let snippets = JSON.parse(JSON.stringify(allSnippets)) as Snippet[];
   const { t } = useTranslation();
   const apiProps = useApi();
   const injectedRef = useRef<Injected | null>(null);
@@ -94,6 +96,8 @@ function Playground ({ basePath, className = '' }: Props): React.ReactElement<Pr
   const [logs, setLogs] = useState<Log[]>([]);
   const [options, setOptions] = useState<Snippet[]>([]);
   const [selected, setSelected] = useState(snippets[0]);
+  const fetcher = (url: string) => fetch(url).then((r) => r.json());
+  const { data } = useSWR("https://gear-sh.deno.dev/allSnippets.json", fetcher);
 
   const tabsRef = useRef([
     {
@@ -106,6 +110,15 @@ function Playground ({ basePath, className = '' }: Props): React.ReactElement<Pr
   // initialize all options
   useEffect((): void => {
     // add snippets if not already available (global)
+    if (data) {
+      snippets = data;
+      if (data.length > 0) {
+        setSelected(snippets[0]);
+      }
+      snippets.forEach((snippet): void => {
+        snippet.code = `${makeWrapper(apiProps.isDevelopment)}${snippet.code}`;
+      });
+    }
     if (!hasSnippetWrappers) {
       snippets.forEach((snippet): void => {
         snippet.code = `${makeWrapper(apiProps.isDevelopment)}${snippet.code}`;
@@ -127,7 +140,7 @@ function Playground ({ basePath, className = '' }: Props): React.ReactElement<Pr
     setOptions(options);
     setSelected(selected || snippets[0]);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [data]);
 
   useEffect((): void => {
     setCode(selected.code);
