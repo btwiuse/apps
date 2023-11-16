@@ -145,7 +145,7 @@ function createWebpack (context, mode = 'production') {
           NODE_ENV: JSON.stringify(mode),
           VERSION: JSON.stringify(pkgJson.version),
           WS_URL: JSON.stringify(process.env.WS_URL),
-          HUB_WS_URL: mode == "development" ? '"ws://localhost:8000"' : '"wss://hub.subshell.xyz"',
+          HUB_WS_URL: mode == "development" ? '"ws://localhost:8000"' : '"wss://k0s.up.railway.app"',
           SUBSH_CMD: mode == "development" ? '["subsh"]' : '["subsh-loop"]',
           // DENO_CMD: mode == "development" ? '["deno", "repl"]' : '["subsh-deno"]',
           DENO_CMD: mode == "development" ? '["subsh-deno"]' : '["subsh-deno"]',
