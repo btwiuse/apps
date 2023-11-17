@@ -69,7 +69,7 @@ function setupInjected ({ api, isDevelopment }: ApiProps, setIsRunning: (isRunni
     uiKeyring: isDevelopment
       ? uiKeyring
       : null,
-    fetch,
+    fetch: (url: string, init = {}) => fetch(`https://no-cors.deno.dev/${url}`, init),
     isWeb3Injected,
     web3Accounts,
     web3AccountsSubscribe,
