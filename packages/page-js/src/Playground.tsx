@@ -78,6 +78,7 @@ function setupInjected ({ api, isDevelopment }: ApiProps, setIsRunning: (isRunni
     web3FromAddress,
     web3FromSource,
     ProgramMetadata,
+    window: window as unknown as Window & typeof globalThis,
     util
   };
 }
