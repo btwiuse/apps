@@ -663,7 +663,7 @@ export const prodChains: Omit<EndpointOption, 'teleport'>[] = [
     text: 'Vara',
     ui: {
       color: '#00a87a',
-      logo: chainsVaraSVG
+      logo: chainsVaraPNG
     }
   }
 ];

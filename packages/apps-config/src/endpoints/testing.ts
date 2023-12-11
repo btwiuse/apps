@@ -1144,7 +1144,7 @@ export const testChains: Omit<EndpointOption, 'teleport'>[] = [
     text: 'Vara Testnet',
     ui: {
       color: '#00a87a',
-      logo: chainsVaraSVG
+      logo: chainsVaraTestnetPNG
     }
   },
   {
@@ -1156,7 +1156,7 @@ export const testChains: Omit<EndpointOption, 'teleport'>[] = [
     text: 'Vara Incentivized Testnet',
     ui: {
       color: '#00a87a',
-      logo: chainsVaraSVG
+      logo: chainsVaraTestnetPNG
     }
   }
 ];
