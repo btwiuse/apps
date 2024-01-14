@@ -558,7 +558,7 @@ export const _prodChains: Omit<EndpointOption, 'teleport'>[] = [
   {
     info: 'vara',
     providers: {
-      Gear: 'wss://rpc.vara-network.io'
+      Gear: 'wss://rpc.vara.network'
     },
     text: 'Vara',
     ui: {
@@ -583,8 +583,8 @@ export const prodChains: Omit<EndpointOption, 'teleport'>[] = [
   {
     info: 'vara',
     providers: {
-      'Gear Tech (Archive)': 'wss://archive-rpc.vara-network.io',
-      'Gear Tech': 'wss://rpc.vara-network.io',
+      'Gear Tech (Archive)': 'wss://archive-rpc.vara.network',
+      'Gear Tech': 'wss://rpc.vara.network',
       'light client': 'light://substrate-connect/vara'
     },
     text: 'Vara',
