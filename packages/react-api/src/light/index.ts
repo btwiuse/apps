@@ -1,7 +1,7 @@
 // Copyright 2017-2023 @polkadot/react-api authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import { WellKnownChain } from '@substrate/connect';
+import { WellKnownChain } from '@pocketdot/connect';
 
 import { specs as kusama } from './kusama/index.js';
 import { specs as polkadot } from './polkadot/index.js';
@@ -23,5 +23,6 @@ export const relaySpecs: Record<string, string> = {
   kusama: WellKnownChain.ksmcc3,
   polkadot: WellKnownChain.polkadot,
   rococo: WellKnownChain.rococo_v2_2,
-  westend: WellKnownChain.westend2
+  westend: WellKnownChain.westend2,
+  vara: WellKnownChain.vara,
 };

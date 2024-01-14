@@ -68,6 +68,7 @@
   },
   "dependencies": {
     "@gear-js/api": "^0.35.1",
+    "@pocketdot/connect": "^0.8.10",
     "react-query": "^3.39.1",
     "uuid": "^8.3.2"
   },
