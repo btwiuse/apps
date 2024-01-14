@@ -1071,17 +1071,5 @@ export const testChains: Omit<EndpointOption, 'teleport'>[] = [
       color: '#00a87a',
       logo: chainsVaraPNG
     }
-  },
-  {
-    info: 'vara-vit',
-    providers: {
-      'Gear Tech': 'wss://vit.vara.network',
-      'light client': 'light://substrate-connect/vara-vit'
-    },
-    text: 'Vara Incentivized Testnet',
-    ui: {
-      color: '#00a87a',
-      logo: chainsVaraPNG
-    }
   }
 ];
