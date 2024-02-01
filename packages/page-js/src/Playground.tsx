@@ -6,6 +6,7 @@ import type { KeyringInstance } from '@polkadot/keyring/types';
 import type { ApiProps } from '@polkadot/react-api/types';
 import type { AppProps as Props } from '@polkadot/react-components/types';
 import type { Log, LogType, Snippet } from './types.js';
+import { GearKeyring } from '@gear-js/api';
 import { ProgramMetadata } from '@gear-js/api';
 import { web3Enable, web3EnablePromise, isWeb3Injected, web3Accounts, web3AccountsSubscribe, web3FromAddress, web3FromSource } from "@polkadot/extension-dapp";
 
