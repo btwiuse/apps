@@ -12,7 +12,7 @@ import { settings } from '@polkadot/ui-settings';
 import { decodeUrlTypes } from '@polkadot/react-api/urlTypes';
 import store from 'store';
 
-import "xterm/css/xterm.css";
+import "@xterm/xterm/css/xterm.css";
 import "./xterm_customize.css";
 
 interface Props {

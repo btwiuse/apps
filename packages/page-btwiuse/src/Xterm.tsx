@@ -3,10 +3,10 @@
 
 // https://github.com/PrinOrange/web-terminal/blob/master/frontend/src/view/MyTerm.tsx
 
-import { Terminal } from "xterm";
-import { FitAddon } from "xterm-addon-fit";
+import { Terminal } from "@xterm/xterm";
+import { FitAddon } from "@xterm/addon-fit";
 import React, { useEffect } from "react";
-import "xterm/css/xterm.css";
+import "@xterm/xterm/css/xterm.css";
 
 export default function Xterm() {
   const dom_id = "btwiuse-xterm";
