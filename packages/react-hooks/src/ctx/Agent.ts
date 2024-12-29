@@ -71,8 +71,8 @@ export class Agent {
     this.incr = incr;
     this.counter = 0;
 
-    this.WS_URL = `${base}/api/rpc`;
-    this.WS_URL_ID = `${base}/api/jsonl?id=${id}`;
+    this.WS_URL = `${base}/api/upgrade`;
+    this.WS_URL_ID = `${base}/api/upgrade?protocol=jsonl&id=${id}`;
     this.HEADER = JSON.stringify({
       "id": id,
       "name": id,
