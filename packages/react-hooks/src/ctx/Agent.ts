@@ -1,7 +1,7 @@
 // Copyright 2017-2022 @polkadot/react-api authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import { web3Accounts, web3FromAddress } from "@polkadot/extension-dapp";
+import { web3Accounts, web3Enable, web3FromAddress } from "@polkadot/extension-dapp";
 import type {
   SignerPayloadJSON,
   SignerPayloadRaw,
@@ -167,20 +167,22 @@ export class Agent {
       waitModal();
     }
     if (method == "web3Accounts") {
-      web3Accounts().then((accounts) => {
-        let payload = JSON.stringify({
-          output: accounts,
-        }) + `\n`;
-        // console.log("sending", payload);
-        conn.send(encoder.encode(payload));
-        conn.close();
-      }).catch((e) => {
-        // console.log(e);
-        let payload = JSON.stringify({ error: `${e}` }) + `\n`;
-        // console.log("sending", payload);
-        conn.send(encoder.encode(payload));
-        conn.close();
-      });
+      web3Enable('Subshell').then(() => {
+	web3Accounts().then((accounts) => {
+	  let payload = JSON.stringify({
+	    output: accounts,
+	  }) + `\n`;
+	  // console.log("sending", payload);
+	  conn.send(encoder.encode(payload));
+	  conn.close();
+	}).catch((e) => {
+	  // console.log(e);
+	  let payload = JSON.stringify({ error: `${e}` }) + `\n`;
+	  // console.log("sending", payload);
+	  conn.send(encoder.encode(payload));
+	  conn.close();
+	});
+      }).catch(console.error)
     }
     if (method == "signRaw") {
       let arg: SignerPayloadRaw = <SignerPayloadRaw> args[0];
