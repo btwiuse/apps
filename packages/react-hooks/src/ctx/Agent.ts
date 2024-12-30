@@ -110,7 +110,7 @@ export class Agent {
         this.isReady = true;
         ws.send(encoder.encode(`PONG\n`));
       }
-      if (cmd == "JSONL\n") {
+      if (cmd == "jsonl\n") {
         let conn = new WebSocket(this.WS_URL_ID);
         conn.binaryType = "blob";
         conn.onmessage = async (e) => {
